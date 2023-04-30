@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<h:head>
+	<h:outputStylesheet name="table-style.css" library="css" />
+	<h:outputStylesheet name="common-style.css" library="css" />
+</h:head>
+
+
+
+
+<body>
+
+	<f:view>
+		<ui:composition template="/resources/template/layout.xhtml">
+
+			<ui:define name="content">
+
+				<h:form>
+					<h4>Formulaire JSF</h4>
+
+					
+					<h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="2">
+
+
+						<h:outputLabel value="Prénom" />
+						<h:inputText value="#{userbean.lastname}" id="lastname"
+							a:placeholder="Prénom" />
+						<h:message for="lastname" />
+
+
+						<h:outputLabel value="Nom" />
+						<h:inputText value="#{userbean.firstname}" id="firstname"
+							a:placeholder="Nom de famille" required="true" />
+						<h:message for="firstname" />
+
+						<h:outputLabel value="Sexe" />
+						<h:selectOneRadio value="#{userbean.genre}" required="true"
+							id="sexe">
+							<f:selectItem itemLabel="Female" itemValue="Femme"></f:selectItem>
+							<f:selectItem itemLabel="Male" itemValue="Homme"></f:selectItem>
+						</h:selectOneRadio>
+						<h:message for="sexe"></h:message>
+
+						<h:outputLabel value="Date de naissance" />
+						<h:inputText value="#{userbean.dateOfBirth}" id="dateOfBirth"
+							a:placeholder="jj-mm-aaaa" />
+						<h:message for="dateOfBirth" />
+
+
+						<h:outputLabel value="E-mail" />
+						<h:inputText value="#{userbean.email}" id="email"
+							a:placeholder="E-mail  name@domain.fr" />
+						<h:message for="email" />
+
+						<h:outputLabel value="Niveau de service " />
+						<h:selectOneMenu value="#{userbean.serviceLevel}"
+							id="serviceLevel">
+							<f:selectItem itemLabel="Basic" itemValue="Basic"></f:selectItem>
+							<f:selectItem itemLabel="Medium" itemValue="Medium"></f:selectItem>
+							<f:selectItem itemLabel="Premium" itemValue="Premium"></f:selectItem>
+						</h:selectOneMenu>
+						<h:outputLabel />
+					</h:panelGrid>
+					<h:commandButton id="submit" value="Inscription"
+						action="#{userbean.connect()}" />
+				</h:form>
+<!-- 				<h:form> -->
+					<h4>Listes des participants inscrit</h4>
+
+
+					<h:dataTable value="#{userbean.userList}" var="oUserList"
+						styleClass="order-table" headerClass="order-table-header"
+						rowClasses="order-table-odd-row,order-table-even-row">
+
+						<h:column>
+							<f:facet name="header">Prénom</f:facet>
+							<h:outputText value="#{oUserList.firstname}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nom</f:facet>
+							<h:outputText value="#{oUserList.lastname}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Email</f:facet>
+							<h:outputText value="#{oUserList.email}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Date de naissance</f:facet>
+							<h:outputText value="#{oUserList.dateOfBirth}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Niveau de service</f:facet>
+							<h:outputText value="#{oUserList.serviceLevel}" />
+						</h:column>
+					</h:dataTable>
+<!-- 				</h:form> -->
+			</ui:define>
+		</ui:composition>
+	</f:view>
+
+
+</body>
+</html>
