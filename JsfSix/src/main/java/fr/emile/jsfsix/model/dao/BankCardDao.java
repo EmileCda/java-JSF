@@ -10,7 +10,7 @@ import java.util.List;
 import fr.emile.jsfsix.common.IConstant;
 import fr.emile.jsfsix.entity.BankCard;
 import fr.emile.jsfsix.entity.User;
-import fr.emile.jsfsix.model.connection.DatabaseConnection;
+import fr.emile.jsfsix.model.connection.DBConnect;
 import fr.emile.jsfsix.utils.Utils;
 
 public class BankCardDao implements IBankCardDao, IConstant {
@@ -25,7 +25,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "INSERT INTO `bank_card` ("+
 					"`card_number`,`expiry_date`,`crypto`, `is_valid`,"+
@@ -63,7 +63,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 		ResultSet resultSet = null;
 		BankCard bankCard = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String request = "SELECT id,card_number, expiry_date,crypto," +
 					"is_valid,is_delete,user_id,belong_to FROM bank_card WHERE id = ?";
 
@@ -96,7 +96,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 		ResultSet resultSet = null;
 		List<BankCard> bankCardList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String request = "SELECT id,card_number, expiry_date,crypto," +
 					"is_valid,is_delete,user_id,belong_to FROM bank_card WHERE user_id = ?";
 
@@ -132,7 +132,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 		ResultSet resultSet = null;
 		List<BankCard> bankCardList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String request = "SELECT id,card_number, expiry_date,crypto," +
 					"is_valid,is_delete,user_id,belong_to FROM bank_card ";
 			preparedStatement = connection.prepareStatement(request);
@@ -175,7 +175,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 
 		try {
 
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "UPDATE `bank_card` SET `is_valid` = ? WHERE `id` = ?;";
 			preparedStatement = connection.prepareStatement(request);
@@ -204,7 +204,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 
 		try {
 
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "UPDATE `bank_card` SET `is_delete` = ?  WHERE `id` = ?;";
 			preparedStatement = connection.prepareStatement(request);
@@ -236,7 +236,7 @@ public class BankCardDao implements IBankCardDao, IConstant {
 
 		try {
 
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "UPDATE `bank_card` SET `is_delete` = ?  WHERE `user_id` = ?;";
 			preparedStatement = connection.prepareStatement(request);

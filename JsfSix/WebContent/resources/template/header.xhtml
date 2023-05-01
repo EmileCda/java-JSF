@@ -15,11 +15,13 @@
 		<h:form>
 			<ul>
 				<li><h:commandLink action="/main.xhtml">
-						<h:outputText value="Home"></h:outputText>
-
+						<h:outputText value="#{msg['menu.home']}"></h:outputText>
+					</h:commandLink></li>
+				<li><h:commandLink action="/Enlist.xhtml">
+						<h:outputText value="#{msg['menu.enlist']}"></h:outputText>
 					</h:commandLink></li>
 				<li><h:commandLink action="/Enrollment.xhtml">
-						<h:outputText value="Enrollment"></h:outputText>
+						<h:outputText value="#{msg['menu.enroll']}"></h:outputText>
 					</h:commandLink></li>
 				<li><h:commandLink action="/test.xhtml">
 						<h:outputText value="Test"></h:outputText>

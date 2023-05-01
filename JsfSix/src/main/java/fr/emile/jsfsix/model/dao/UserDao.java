@@ -12,7 +12,7 @@ import fr.emile.jsfsix.entity.Address;
 import fr.emile.jsfsix.entity.BankCard;
 import fr.emile.jsfsix.entity.Order;
 import fr.emile.jsfsix.entity.User;
-import fr.emile.jsfsix.model.connection.DatabaseConnection;
+import fr.emile.jsfsix.model.connection.DBConnect;
 import fr.emile.jsfsix.utils.Utils;
 
 public class UserDao implements IUserDao, IConstant {
@@ -28,7 +28,7 @@ public class UserDao implements IUserDao, IConstant {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "INSERT INTO user(firstname, lastname, date_of_birth, `is_deleted`)"+
 			"VALUES(?,?,?,?)";
 			preparedStatement = connection.prepareStatement(sqlRequest, Statement.RETURN_GENERATED_KEYS);
@@ -58,7 +58,7 @@ public class UserDao implements IUserDao, IConstant {
 		ResultSet resultSet = null;
 		List<User> userList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "SELECT `id`, `firstname`, `lastname`,"+
 					"`date_of_birth`, `is_deleted` "+
 					"FROM `user` WHERE 1";
@@ -108,7 +108,7 @@ public class UserDao implements IUserDao, IConstant {
 		ResultSet resultSet = null;
 		User user = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "SELECT `id`, `firstname`, `lastname`,"+
 					"`date_of_birth`, `is_deleted` "+
 					"FROM `user` WHERE id = ?";
@@ -154,7 +154,7 @@ public class UserDao implements IUserDao, IConstant {
 		int result = 0;
 		PreparedStatement preparedStatement = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "UPDATE user SET "+
 					"firstname = ?, lastname = ?, date_of_birth = ?,`is_deleted`=? "+
 					"WHERE id = ?";
@@ -199,7 +199,7 @@ public class UserDao implements IUserDao, IConstant {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "UPDATE user SET "+
 					"`is_deleted`= ? "+
 					"WHERE id = ?";

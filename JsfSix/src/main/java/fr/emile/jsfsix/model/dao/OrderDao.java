@@ -10,7 +10,7 @@ import java.util.List;
 import fr.emile.jsfsix.common.IConstant;
 import fr.emile.jsfsix.entity.Order;
 import fr.emile.jsfsix.entity.User;
-import fr.emile.jsfsix.model.connection.DatabaseConnection;
+import fr.emile.jsfsix.model.connection.DBConnect;
 import fr.emile.jsfsix.utils.Utils;
 
 public class OrderDao implements IOrderDao, IConstant {
@@ -25,7 +25,7 @@ public class OrderDao implements IOrderDao, IConstant {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "INSERT INTO `stuff_order` (`number`,"
 			+"`create_date`,`cancellation_date`,`delivery_date`,`delivery_methode`,"
@@ -66,7 +66,7 @@ public class OrderDao implements IOrderDao, IConstant {
 		ResultSet resultSet = null;
 		Order  order = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String request = "SELECT id, number,create_date,delivery_date,cancellation_date,"
 					+"delivery_methode,delivery_address_id,billing_address_id,user_id,bankcard_id,is_deleted,status "
 					+"From stuff_order "
@@ -105,7 +105,7 @@ public class OrderDao implements IOrderDao, IConstant {
 		ResultSet resultSet = null;
 		List<Order> orderList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String request = "SELECT id, number,create_date,delivery_date,cancellation_date,"
 					+"delivery_methode,delivery_address_id,billing_address_id,user_id,bankcard_id,is_deleted,status "
 					+ "FROM stuff_order "
@@ -150,7 +150,7 @@ public class OrderDao implements IOrderDao, IConstant {
 		ResultSet resultSet = null;
 		List<Order> orderList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String request = "SELECT id, number,create_date,delivery_date,cancellation_date," +
 					"delivery_methode,delivery_address_id,billing_address_id,user_id,bankcard_id,is_deleted,status " +
 					"FROM stuff_order " +
@@ -195,7 +195,7 @@ public class OrderDao implements IOrderDao, IConstant {
 
 		try {
 
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "UPDATE `stuff_order` SET `number`=?," +
 						"`create_date`=?,`cancellation_date`=?,`delivery_date`=?,"+
@@ -245,7 +245,7 @@ public class OrderDao implements IOrderDao, IConstant {
 
 		try {
 
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "UPDATE `stuff_order` SET `is_deleted` = ?  WHERE `id` = ?;";
 			preparedStatement = connection.prepareStatement(request,Statement.RETURN_GENERATED_KEYS);
@@ -284,7 +284,7 @@ public class OrderDao implements IOrderDao, IConstant {
 
 		try {
 
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 
 			String request = "UPDATE `stuff_order` SET `is_deleted` = ?  WHERE `user_id` = ?;";
 			preparedStatement = connection.prepareStatement(request);

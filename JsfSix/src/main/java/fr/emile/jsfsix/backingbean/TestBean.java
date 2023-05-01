@@ -1,5 +1,8 @@
 package fr.emile.jsfsix.backingbean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIInput;
@@ -19,7 +22,7 @@ public class TestBean {
 
 		this.setName("name-toto");
 		this.setPassword("pass");
-
+		System.out.println("TestBean");
 
 	}
 
@@ -54,6 +57,27 @@ public class TestBean {
 	}
 
 
+	public void activate () {
+		System.out.println("public void activate");
+		List<String> myList = new ArrayList<String>();
+		String value = "JAVA;PHP;CSHARP;" ;
+		
+		String lang[]=value.split(";");
+		
+		for (String string : lang) {
+			System.out.printf("lan %s\n",string);
+			
+		}
+		System.out.printf("mylist %s \n",myList);
+		
+		
+		String str = "J'aime le Java";
+        String[] words = str.split(" ");
+        for (String word : words) {
+            System.out.println(word);
+        }
+		
+	}
 	public void submit() {
 //		System.out.println("public void submit");
 		System.out.println(this.toString());

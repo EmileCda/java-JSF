@@ -10,7 +10,7 @@ import java.util.List;
 import fr.emile.jsfsix.common.IConstant;
 import fr.emile.jsfsix.entity.Address;
 import fr.emile.jsfsix.entity.User;
-import fr.emile.jsfsix.model.connection.DatabaseConnection;
+import fr.emile.jsfsix.model.connection.DBConnect;
 
 public class AddressDao implements IAddressDao, IConstant {
 
@@ -26,7 +26,7 @@ public class AddressDao implements IAddressDao, IConstant {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "INSERT INTO address(" +
 							"number, street, city,zip_code,user_id,is_valid)"+
 							"VALUES(?,?,?,?,?,?)";
@@ -58,7 +58,7 @@ public class AddressDao implements IAddressDao, IConstant {
 		ResultSet resultSet = null;
 		List<Address> addressList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "SELECT `id`, `number`, `street`,"+
 						"`city`, `zip_code`, `user_id`, `is_valid`"+
 						"FROM `address` WHERE 1";
@@ -102,7 +102,7 @@ public class AddressDao implements IAddressDao, IConstant {
 		ResultSet resultSet = null;
 		List<Address> addressList = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "SELECT `id`, `number`, `street`,"+
 					"`city`, `zip_code`, `user_id`, `is_valid`"+
 					"FROM address WHERE user_id=? ";
@@ -142,7 +142,7 @@ public class AddressDao implements IAddressDao, IConstant {
 		ResultSet resultSet = null;
 		Address address = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "SELECT `id`, `number`, `street`,"+
 					"`city`, `zip_code`, `user_id`, `is_valid`"+
 					"FROM address WHERE id=? ";
@@ -181,7 +181,7 @@ public class AddressDao implements IAddressDao, IConstant {
 
 		PreparedStatement preparedStatement = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "UPDATE address SET"+
 								"number = ?, street = ?, city = ?, " +
 								"zip_code= ?, user_id = ?,is_valid = ?"+
@@ -210,7 +210,7 @@ public class AddressDao implements IAddressDao, IConstant {
 		int result = 0 ;
 		PreparedStatement preparedStatement = null;
 		try {
-			connection = DatabaseConnection.getConnection();
+			connection = DBConnect.getConnection();
 			String sqlRequest = "DELETE FROM address WHERE id = ?";
 			preparedStatement = connection.prepareStatement(sqlRequest);
 			preparedStatement.setInt(1, id);

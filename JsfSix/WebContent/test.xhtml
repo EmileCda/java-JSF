@@ -11,15 +11,18 @@
 </head>
 <body>
 
-<ui:composition template="/resources/template/layout.xhtml">
+	<ui:composition template="/resources/template/layout.xhtml">
 
-	<ui:define name="content">
-		<f:view>
-		
-		<h1>test</h1>
+		<ui:define name="content">
+			<f:view><h:form>
+
+				<h1>#{testBean.name}</h1>
+				<h:commandButton id="AddStudent"  value="activate"  action="#{testBean.activate()}" />
+				
+				</h:form>
 			</f:view>
-	</ui:define>
-</ui:composition>
+		</ui:define>
+	</ui:composition>
 
 </body>
 </html>

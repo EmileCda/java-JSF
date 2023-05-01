@@ -18,6 +18,7 @@ public interface IConstant {
 	public final String  DEFAULT_ADDRESS_STREET = "No-street" ;
 	public final String  DEFAULT_ADDRESS_CITY = "No-City" ;
 	public final String  DEFAULT_ADDRESS_ZIP_CODE = "AXBXC" ;
+	public final String  DATE_FORMAT= "dd/MM/yyyy" ;
 
 	public final boolean  DEFAULT_IS_VALIDE= true;
 	public final boolean DEFAULT_IS_DELETE= false;

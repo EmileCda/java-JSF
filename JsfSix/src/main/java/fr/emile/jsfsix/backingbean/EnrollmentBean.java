@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.emile.jsfsix.entity.Student;
 import fr.emile.jsfsix.entity.User;
 
 
@@ -23,21 +24,14 @@ public class EnrollmentBean {
 	private String firstname;
 	private String lastname;
 	private String gender;
-	private String tarte  = "";
 	private String birthdate;
 	private String email;
 	private String serviceLevel;
-
-
-
 	private String address;
-
 	private String information;
-
 	private boolean addMode;
-
-
 	private List<User> userListDisplay;
+
 	public EnrollmentBean() {
 		if (!EnrollmentBean.isInstanced()) {
 			System.out.println("ici");
@@ -221,12 +215,6 @@ public class EnrollmentBean {
 	}
 	public static void setInstanced(boolean isInstanced) {
 		EnrollmentBean.isInstanced = isInstanced;
-	}
-	public String getTarte() {
-		return tarte;
-	}
-	public void setTarte(String tarte) {
-		this.tarte = tarte;
 	}
 	public boolean isAddMode() {
 		return addMode;
