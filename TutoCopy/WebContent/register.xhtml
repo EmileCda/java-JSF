@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+	<h:outputStylesheet name="table-style.css" library="css" />
+	<h:outputStylesheet name="common-style.css" library="css" />
+	<title>Insert title here</title>
+</h:head>
+
+
+<body>
+	<f:view>
+		<ui:composition template="/resources/template/layout.xhtml">
+
+			<ui:define name="content">
+
+				<h:form>
+					<h4>Formulaire JSF</h4>
+					<h:panelGrid id="panel" columns="3" cellpadding="2" cellspacing="2">
+						<h:outputLabel value="Prénom" />
+						
+<!-- 						<h:inputText value="#{userBean.firstname}" id="firstname"	a:placeholder="Prénom" /> -->
+						<h:inputText value="#{userBean.firstname}" id="firstname"	 />
+						<h:message for="firstname" />
+
+
+						<h:outputLabel value="Nom" />
+						<h:inputText value="#{userBean.lastname}" id="lastname"
+							a:placeholder="Nom de famille" required="true" />
+						<h:message for="lastname" />
+
+					</h:panelGrid>
+					<h:commandButton id="submit" value="Inscription"
+						action="#{userBean.createAccount()}" />
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</f:view>
+
+
+</body>
+</html>

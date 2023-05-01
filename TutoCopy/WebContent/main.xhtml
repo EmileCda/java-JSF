@@ -3,26 +3,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tutp JSF</title>
+<title>Java Maven JSF Test</title>
 </head>
 <ui:composition template="/resources/template/layout.xhtml">
 
 	<ui:define name="content">
 		<f:view>
-		
-			<ui:insert name="formEnrollment">
-				<ui:include src="/resources/module/formEnrollment.xhtml" />
-			</ui:insert>
-			<br/>
-			<ui:insert name="formDisplayregistrants">
-				<ui:include src="/resources/module/formDisplayRegistrant.xhtml" />
-			</ui:insert>
-			</f:view>
+			<h:form>
+				<h2>Home page</h2>
+
+			</h:form>
+		</f:view>
 	</ui:define>
 </ui:composition>
 </html>
