@@ -13,9 +13,7 @@ import fr.emile.jsfsix.model.dao.IStudentDao;
 import fr.emile.jsfsix.model.dao.StudentDao;
 
 
-@ManagedBean(name = "attendeeListBean", eager = true)
-@SessionScoped
-public class AttendeeListBean implements IConstant  {
+public class AttendeeListBean0 implements IConstant  {
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -30,7 +28,7 @@ public class AttendeeListBean implements IConstant  {
 	List<Student> attendeeList ; 
 	
 	
-	public AttendeeListBean(String firstname, String lastname, String email, String birthdate, String serviceLevel,
+	public AttendeeListBean0(String firstname, String lastname, String email, String birthdate, String serviceLevel,
 			String address, String phone, String position, String available, String langList
 			) {
 		this.setFirstname ( firstname);
@@ -47,7 +45,7 @@ public class AttendeeListBean implements IConstant  {
 	}
 
 
-	public AttendeeListBean() {
+	public AttendeeListBean0() {
 		
 		this.attendeeList = new ArrayList<Student>();
 		

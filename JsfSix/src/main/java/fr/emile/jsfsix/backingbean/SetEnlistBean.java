@@ -1,14 +1,13 @@
 package fr.emile.jsfsix.backingbean;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import fr.emile.jsfsix.common.IConstant;
+import fr.emile.jsfsix.entity.Address;
 import fr.emile.jsfsix.entity.Student;
 import fr.emile.jsfsix.enums.DevLang;
 import fr.emile.jsfsix.enums.Gender;
@@ -16,10 +15,12 @@ import fr.emile.jsfsix.enums.Position;
 import fr.emile.jsfsix.enums.ServiceLevel;
 import fr.emile.jsfsix.utils.Utils;
 
+
 @ManagedBean(name = "enlistBean", eager = true)
 @SessionScoped
-public class EnlistBean implements IConstant {
+public class SetEnlistBean implements IConstant {
 
+	private int id;
 	private String firstname;
 	private String lastname;
 	private String gender;
@@ -30,7 +31,14 @@ public class EnlistBean implements IConstant {
 	private String phone;
 	private String position;
 	private String available;
+	private int addressId;
+	private boolean addressValide;
+	private String number;
+	private String street;
+	private String zipCode;
+	private String city;
 	private String information;
+	
 	private boolean addMode;
 	private Student student;
 	private List<String> genderList;
@@ -41,7 +49,7 @@ public class EnlistBean implements IConstant {
 	private List<String> langListSelected;
 
 
-	public EnlistBean() {
+	public SetEnlistBean() {
 
 		genderList = new ArrayList<String>();
 		serviceLevelList = new ArrayList<String>();
@@ -83,7 +91,7 @@ public class EnlistBean implements IConstant {
 
 	}
 
-	public EnlistBean(String firstname, String lastname, String gender, String birthdate, String email,
+	public SetEnlistBean(String firstname, String lastname, String gender, String birthdate, String email,
 			String serviceLevel, Student student) {
 		this.setFirstname(firstname);
 		this.setLastname(lastname);
@@ -94,7 +102,7 @@ public class EnlistBean implements IConstant {
 		this.setStudent(student);
 	}
 	
-	public EnlistBean(Student student) {
+	public SetEnlistBean(Student student) {
 		this(student.getFirstname(),
 				student.getLastname(),
 				student.getGender().getValue(),
@@ -104,11 +112,10 @@ public class EnlistBean implements IConstant {
 				student);
 	}
 		
-			
-	
+
 	public void validateChange() {
 		Student modStudent = new Student(
-				this.getStudent().getId(),
+				this.getId(),
 				this.getFirstname(),
 				this.getLastname(),
 				Gender.fromString(this.getGender()),
@@ -117,10 +124,24 @@ public class EnlistBean implements IConstant {
 				ServiceLevel.fromString(this.getServiceLevel()),
 				this.getPhone(),
 				Position.fromString(this.getPosition()),
+				DevLang.ListStringString(this.getLangListSelected()),
 				Boolean.parseBoolean(this.getAvailable())
 				);
 				
+		modStudent.setDesiredLanguageList(DevLang.stringList2LangList(this.getLangListSelected()));
 		modStudent.update();
+		
+		
+		Address address = new Address (
+				this.getAddressId(),
+				this.getNumber(),
+				this.getStreet(),
+				this.getCity(),
+				this.getZipCode(),
+				this.getId(),
+				this.getAddressValide());
+
+		address.update();
 		this.setAddMode(false);
 		this.resetFields();
 		System.out.println("validateChange");
@@ -140,29 +161,45 @@ public class EnlistBean implements IConstant {
 		
 		
 	}
-	public void modify(Student student)  {
+	public void modify(DisplayEnlistBean attendeeListBean)  {
+		List<String> myLangList = new ArrayList<String>();
 		
-		System.out.println("modify");
-		System.out.println(student);
+		String tabLang[]=attendeeListBean.getLangList();
 		
-		this.setFirstname(student.getFirstname());                                    
-		this.setLastname(student.getLastname());                                     
-		this.setGender(student.getGender().getValue());                            
-		this.setBirthdate(Utils.date2String(student.getBirthdate(),DATE_FORMAT));     
-		this.setEmail(student.getEmail());                                        
-		this.setServiceLevel(student.getServiceLevel().getValue());
+		for (String oneLang : tabLang) {
+			myLangList.add(oneLang);
+			
+		}
+
+		
+		this.setId(attendeeListBean.getId());                                    
+		this.setFirstname(attendeeListBean.getFirstname());                                    
+		this.setLastname(attendeeListBean.getLastname());                                     
+		this.setBirthdate(attendeeListBean.getBirthdate());     
+		this.setEmail(attendeeListBean.getEmail());                                        
+		this.setPhone(attendeeListBean.getPhone());                                        
+		this.setAddress(attendeeListBean.getAddress());                                        
+		this.setServiceLevel(attendeeListBean.getServiceLevel());
+		this.setPosition(attendeeListBean.getPosition());
+		this.setAvailable(attendeeListBean.getAvailable());                            
+		this.setGender(attendeeListBean.getGender());                            
+		this.setLangListSelected(myLangList);                            
 		this.setStudent(student);                                                  
 		this.setAddMode(true);
-		System.out.println(this.getFirstname());
-
+		
+		
 		
 	}
 	public void enroll() {
 
+		
 		Student student = new Student(DEFAULT_ID, this.getFirstname(), this.getLastname(),
 				Gender.fromString(this.getGender()), Utils.string2Date(this.getBirthdate(), DATE_FORMAT),
 				this.getEmail(), ServiceLevel.fromString(this.getServiceLevel()), this.getPhone(),
-				Position.fromString(this.getPosition()), Boolean.valueOf(this.getAvailable())
+				Position.fromString(this.getPosition()), 
+				DevLang.ListStringString(this.getLangListSelected()),
+				
+				Boolean.valueOf(this.getAvailable())
 
 		);
 
@@ -173,6 +210,7 @@ public class EnlistBean implements IConstant {
 		}
 
 		student.add();
+		this.resetFields();
 
 	}
 
@@ -335,6 +373,67 @@ public class EnlistBean implements IConstant {
 
 	public void setLangListSelected(List<String> langListSelected) {
 		this.langListSelected = langListSelected;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public int getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+
+	public boolean getAddressValide() {
+		return isAddressValide();
+	}
+	public boolean isAddressValide() {
+		return addressValide;
+	}
+
+	public void setAddressValide(boolean addressValide) {
+		this.addressValide = addressValide;
 	}
 
 	

@@ -25,16 +25,15 @@
 	
 }
 .enroll-button{
-	background-color:var(--dark);
+	background-color:var(--medium);
     cursor: pointer;
     min-width: 150px;
-    max-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
 	color : var(--light);
-	border: 2px solid var(--medium) ;
-   
+	border: 2px solid var(--dark) ;
+   padding: 1rem;
 }
 
 .justi-left{
@@ -54,18 +53,30 @@
 	display: flex;
 	justify-content: left;
 }
+
 label{
 	padding: 0 1rem;
 }
-
-
 .display-enlist{
 	display :flex;
+	flex-direction:row;
 	justify-content: center;
 	align-items : center;
-	
+
 	min-width: 100%;
-	max-height: 300px;
-	overflow: scroll;
-	
+	min-height: 400px;
+	margin: 1rem 0;
+	padding: 1rem 0;
 }
+
+.column {
+	display: flex;
+	flex-direction:column;
+	justify-content: flex-start;
+}	
+
+.up-part{
+	display: flex;
+	justify-content: space-around;
+}
+

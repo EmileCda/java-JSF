@@ -14,6 +14,11 @@
 			<legend>
 				<h:outputLabel value="#{msg['form.name']}"></h:outputLabel>
 			</legend>
+				<h:commandButton id="Reload"
+						value="#{msg['form.reload']}"
+						action="#{enrollmentBean.reload()}" />
+			
+			
 			<h:panelGrid id="panel" border="1" columns="4" cellpadding="2"
 				cellspacing="2" styleClass="enrollment">
 

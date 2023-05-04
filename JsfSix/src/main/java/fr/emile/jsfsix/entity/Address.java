@@ -1,5 +1,7 @@
 package fr.emile.jsfsix.entity;
 
+import fr.emile.jsfsix.model.dao.AddressDao;
+import fr.emile.jsfsix.model.dao.IAddressDao;
 import fr.emile.jsfsix.common.IConstant;
 
 public class Address implements IConstant {
@@ -46,6 +48,19 @@ public class Address implements IConstant {
 
 	// ---------------processing methode ---------------------
 
+	
+	public int update() {
+		final IAddressDao myAddressDao = new AddressDao();
+		int nbUpdate= 0; 
+		try {
+			nbUpdate= myAddressDao.Update(this);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return nbUpdate; 
+	}
 	// ----------- getter-Setter--------------------
 
 	public int getId() {
@@ -112,10 +127,14 @@ public class Address implements IConstant {
 		this.isDeleted = isDeleted;
 	}
 
-	@Override
-	public String toString() {
+	public String display() {
 		return String.format("Id:%d =>%s, %s %s %s =>userId [%d]", getId(), getNumber(), getStreet(), getZipCode(),
 				getCity(), getIdUser());
+	}
+	@Override
+	public String toString() {
+		return String.format("%s, %s %s %s", getNumber(), getStreet(), getZipCode(),
+				getCity());
 	}
 
 }

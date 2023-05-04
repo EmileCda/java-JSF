@@ -14,7 +14,7 @@ import fr.emile.jsfsix.entity.User;
 
 @ManagedBean(name = "enrollmentBean", eager = true)
 @SessionScoped
-public class EnrollmentBean {
+public class ZEnrollmentBean {
 
 	private static boolean isInstanced = false;
 	private static List<User> userList ;
@@ -32,10 +32,10 @@ public class EnrollmentBean {
 	private boolean addMode;
 	private List<User> userListDisplay;
 
-	public EnrollmentBean() {
-		if (!EnrollmentBean.isInstanced()) {
+	public ZEnrollmentBean() {
+		if (!ZEnrollmentBean.isInstanced()) {
 			System.out.println("ici");
-			EnrollmentBean.setInstanced( true);
+			ZEnrollmentBean.setInstanced( true);
 			userList = new ArrayList<>();
 
 			userList.add(new User("Louis","Laforge","20/12/2000","Homme","emmed@ememd.fr" ));
@@ -49,7 +49,7 @@ public class EnrollmentBean {
 		this.setInformation(String.format("[%d]--[%d] \n",userList.size(),userListDisplay.size()));
 		System.out.println("ici");
 	}
-	public EnrollmentBean(String firstname, String lastname, String gender, String email, String serviceLevel) {
+	public ZEnrollmentBean(String firstname, String lastname, String gender, String email, String serviceLevel) {
 		this.setFirstname(firstname);
 		this.setLastname(lastname);
 		this.setGender(gender);
@@ -69,7 +69,7 @@ public class EnrollmentBean {
 				this.getGender(),
 				this.getEmail(),
 				this.getServiceLevel());
-		EnrollmentBean.getUserList().add(user);
+		ZEnrollmentBean.getUserList().add(user);
 
 	}
 
@@ -81,7 +81,7 @@ public class EnrollmentBean {
 	public void delete(User user) {
 
 		this.setInformation("void delete(User user) vraiment");
-		EnrollmentBean.getUserList().remove(user);
+		ZEnrollmentBean.getUserList().remove(user);
 
 
 	}
@@ -141,7 +141,7 @@ public class EnrollmentBean {
 		this.setId(user.getServiceLevel());
 		this.setBirthdate(user.getBirthDateText());
 
-		this.setId(EnrollmentBean.getUserList().indexOf(user));
+		this.setId(ZEnrollmentBean.getUserList().indexOf(user));
 		this.setAddMode(true);
 
 
@@ -186,7 +186,7 @@ public class EnrollmentBean {
 	}
 
 	public  void setUserList(List<User> userList) {
-		EnrollmentBean.userList = userList;
+		ZEnrollmentBean.userList = userList;
 	}
 
 	public void setUserListDisplay(List<User> userListDisplay) {
@@ -202,7 +202,7 @@ public class EnrollmentBean {
 				this.getGender(),
 				this.getEmail()
 				);
-		EnrollmentBean.getUserList().set(this.getId(),user);
+		ZEnrollmentBean.getUserList().set(this.getId(),user);
 
 
 	}
@@ -214,7 +214,7 @@ public class EnrollmentBean {
 		return isInstanced;
 	}
 	public static void setInstanced(boolean isInstanced) {
-		EnrollmentBean.isInstanced = isInstanced;
+		ZEnrollmentBean.isInstanced = isInstanced;
 	}
 	public boolean isAddMode() {
 		return addMode;

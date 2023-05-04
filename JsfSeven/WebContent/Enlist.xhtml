@@ -8,21 +8,26 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Tutp JSF</title>
+<title>Enlist Student</title>
 </head>
-<ui:composition template="/resources/template/layout.xhtml">
 
+<ui:composition template="/resources/template/layout.xhtml">
 	<ui:define name="content">
 		<f:view>
-		
-			<ui:insert name="formEnrollment">
-				<ui:include src="/resources/module/formEnrollment.xhtml" />
+
+			<ui:insert name="formEnlist">
+				<ui:include src="/resources/module/formEnlistDiv.xhtml" />
+
 			</ui:insert>
-			<br/>
-			<ui:insert name="formDisplayregistrants">
-				<ui:include src="/resources/module/formDisplayRegistrant.xhtml" />
+			<br />
+			<ui:insert name="formDisplayEnlist">
+				<ui:include src="/resources/module/formDisplayEnlist.xhtml" />
 			</ui:insert>
-			</f:view>
+		</f:view>
 	</ui:define>
 </ui:composition>
+
+
+
+
 </html>

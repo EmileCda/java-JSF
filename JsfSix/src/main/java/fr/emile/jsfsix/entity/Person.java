@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fr.emile.jsfsix.model.dao.AddressDao;
+import fr.emile.jsfsix.model.dao.IAddressDao;
+import fr.emile.jsfsix.entity.Address;
 import fr.emile.jsfsix.common.IConstant;
 import fr.emile.jsfsix.enums.Gender;
 import fr.emile.jsfsix.enums.Position;
@@ -21,8 +24,12 @@ public class Person implements IConstant {
 	private List<Address> addressList;
 	private boolean isDeleted;
 	
-	
-	public Person(int id, String fistname, String lastname, Gender gender, Date birthdate, String email, String phone
+	public Person() {
+		this(DEFAULT_ID,"","",Gender.NULL,NULL_DATE,"","");
+		
+	}
+	public Person(int id, String fistname, String lastname, Gender gender, Date birthdate, 
+			String email, String phone
 			) {
 		this.setId ( id);
 		this.setFirstname( fistname);
@@ -31,8 +38,9 @@ public class Person implements IConstant {
 		this.setBirthdate ( birthdate);
 		this.setEmail ( email);
 		this.setPhone (phone);
-		this.addressList = new ArrayList<Address>() ;
 		this.setDeleted (false);
+		
+		this.initAddressList();
 	}
 
 	public void addAddress(Address oneAddress) {
@@ -40,10 +48,29 @@ public class Person implements IConstant {
 	}
 
 
-	
+	public void initAddressList() {
+		
+		if (this.getAddressList() == null)
+			addressList = new ArrayList<Address>() ;		
+		else
+			this.getAddressList().clear(); 
+		
+		if (this.getId() >0 ) {
+			final IAddressDao myAddressDao = new AddressDao();
+			try {
+
+				addressList = myAddressDao.get(this.getId());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		
+	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 

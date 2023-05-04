@@ -11,31 +11,20 @@
 <title>Enlist Student</title>
 </head>
 
-
-
 <ui:composition template="/resources/template/layout.xhtml">
-
-
 	<ui:define name="content">
 		<f:view>
-
-			<ui:insert name="formEnlist">
-				<ui:include src="/resources/module/formEnlistDiv.xhtml" />
-
-			</ui:insert>
-			<br />
 			<ui:insert name="formDisplayEnlist">
 				<ui:include src="/resources/module/formDisplayEnlist.xhtml" />
+			</ui:insert>
+			<ui:insert name="formEnlist">
+				<ui:include src="/resources/module/formSetEnlist.xhtml" />
 			</ui:insert>
 		</f:view>
 	</ui:define>
 </ui:composition>
 
-<h1>JSF 2.2 Managed Property</h1>
 
-<h4>Managed Property</h4>
-<p>#{requestController.param1MP}</p>
-<p>#{requestController.param2MP}</p>
 
 
 </html>
