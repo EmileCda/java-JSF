@@ -13,7 +13,9 @@ public class HibernateConnector {
 	
 	private HibernateConnector() {
 		if(sessionFactory == null) {
-			sessionFactory = new Configuration().configure().buildSessionFactory();
+			sessionFactory = new Configuration()
+					.configure()
+					.buildSessionFactory();
 		}
 	}
 

@@ -26,7 +26,17 @@
     <artifactId>primefaces</artifactId>
     <version>12.0.0-RC3</version>
 </dependency>
-  </dependencies>
+
+<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>font-awesome</artifactId>
+    <version>6.4.0</version>
+</dependency>
+
+
+
+ </dependencies>
     <build>
     <plugins>
       <plugin>
@@ -49,4 +59,13 @@
     
     
   </build>
+    <dependencyManagement>
+    	<dependencies>
+    		<dependency>
+    			<groupId>org.webjars</groupId>
+    			<artifactId>font-awesome</artifactId>
+    			<version>6.4.0</version>
+    		</dependency>
+    	</dependencies>
+    </dependencyManagement>
 </project>
