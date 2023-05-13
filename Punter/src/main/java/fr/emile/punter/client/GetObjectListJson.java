@@ -19,20 +19,19 @@ import fr.emile.punter.common.IConstant;
 import fr.emile.punter.entity.Employee;
 import fr.emile.punter.utils.Utils;
 
-public class GetJsonList implements IConstant {
-
-	
+public class GetObjectListJson implements IConstant {
+		
 	public static void main(String[] args) {
-		final String link = "http://localhost:9991/fabric/employee/json/list";
+
+		final String link = "http://localhost:9991/fabric/employee/list";
 		List<Employee> employeeList = new ArrayList<Employee>();
 		employeeList = JerseyClient.GetList(link,MediaType.APPLICATION_JSON);
 		
+//%%%%%%%%%%%%%%%%%%%%%%%%%  display %%%%%%%%%%%%%%%%%%%%%%%%%%%
 		for (Employee oneEmployee : employeeList) {
-			
 			Utils.trace(oneEmployee.toString());
-			
 		}
-		
 		System.exit(0);
-	}
+	}	
+	
 }

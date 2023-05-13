@@ -19,7 +19,7 @@ import fr.emile.punter.common.IConstant;
 import fr.emile.punter.entity.Employee;
 import fr.emile.punter.utils.Utils;
 
-public class GetXmlList implements IConstant {
+public class GetObjectListXml implements IConstant {
 
 	
 	public static void main(String[] args) {

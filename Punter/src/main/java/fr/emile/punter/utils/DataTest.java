@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-import fr.emile.fabric.common.IConstant;
-import fr.emile.fabric.enums.Gender;
+import fr.emile.punter.common.IConstant;
+import fr.emile.punter.enums.Gender;
 
 public class DataTest implements IConstant {
 

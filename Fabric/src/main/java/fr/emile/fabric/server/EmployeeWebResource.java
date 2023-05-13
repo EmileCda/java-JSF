@@ -64,7 +64,7 @@ public class EmployeeWebResource implements IEmployeeWebResource, IConstant {
 
 	@Override
 	@GET
-	@Path("response/json/{id}")
+	@Path("id/{id}")
 	@Produces({ MediaType.APPLICATION_XML + CHARSET_UTF8, MediaType.APPLICATION_JSON + CHARSET_UTF8 })
 	public Response getEmployeeJsonToResponse(@PathParam("id") Integer id) {
 
@@ -78,7 +78,8 @@ public class EmployeeWebResource implements IEmployeeWebResource, IConstant {
 	@Override
 	@GET
 	@Path("list")
-	@Produces({ MediaType.APPLICATION_XML + CHARSET_UTF8, MediaType.APPLICATION_JSON + CHARSET_UTF8 })
+//	@Produces({ MediaType.APPLICATION_XML + CHARSET_UTF8, MediaType.APPLICATION_JSON + CHARSET_UTF8 })
+	@Produces({  MediaType.APPLICATION_JSON + CHARSET_UTF8,MediaType.APPLICATION_XML + CHARSET_UTF8 })
 	public List<Employee> getEmployeeList() {
 
 		List<Employee> employeeList = new ArrayList<Employee>();
@@ -98,18 +99,7 @@ public class EmployeeWebResource implements IEmployeeWebResource, IConstant {
 	@Path("xml/list")
 	@Produces( MediaType.APPLICATION_XML + CHARSET_UTF8 )
 	public List<Employee> getEmployeeXmlList() {
-
-		List<Employee> employeeList = new ArrayList<Employee>();
-
-		Employee employee;
-		
-		for (int index = 1; index <= 10; index++) {
-			employee = new Employee(DataTest.firstname(), DataTest.lastname(),DataTest.position());
-			employee.setId(index);
-			employeeList.add(employee);
-		}
-
-		return employeeList;
+		return this.getEmployeeList();
 	}
 
 	@Override
@@ -118,17 +108,7 @@ public class EmployeeWebResource implements IEmployeeWebResource, IConstant {
 	@Produces( MediaType.APPLICATION_JSON + CHARSET_UTF8 )
 	public List<Employee> getEmployeeJsonList() {
 
-		List<Employee> employeeList = new ArrayList<Employee>();
-
-		Employee employee;
-		
-		for (int index = 1; index <= 10; index++) {
-			employee = new Employee(DataTest.firstname(), DataTest.lastname(),DataTest.position());
-			employee.setId(index);
-			employeeList.add(employee);
-		}
-
-		return employeeList;
+		return this.getEmployeeList();
 	}
 
 	@Override
@@ -148,18 +128,28 @@ public class EmployeeWebResource implements IEmployeeWebResource, IConstant {
 	@Override
 	@PUT
 	@Path("update")
-	@Consumes(MediaType.APPLICATION_XML + CHARSET_UTF8)
-	public Response updateEmployee(Employee employe) throws URISyntaxException {
+	@Consumes({ MediaType.APPLICATION_XML + CHARSET_UTF8, MediaType.APPLICATION_JSON + CHARSET_UTF8 })
+	@Produces({ MediaType.APPLICATION_XML + CHARSET_UTF8, MediaType.APPLICATION_JSON + CHARSET_UTF8 })
+	public Response updateEmployee(Employee employee) throws URISyntaxException {
 		Utils.trace("updateEmployee");
-		return null;
+		Utils.trace(employee.toString());
+
+		employee.setId(100);
+		return Response.status(Status.ACCEPTED).entity(employee).build();
 	}
 
 	@Override
 	@DELETE
 	@Path("remove/{id}")
-	public Response removeEmployee(Integer id) throws URISyntaxException {
+	@Produces({ MediaType.APPLICATION_XML + CHARSET_UTF8, MediaType.APPLICATION_JSON + CHARSET_UTF8 })
+	public Response removeEmployee(@PathParam("id") Integer id) throws URISyntaxException {
 		Utils.trace("removeEmployee");
-		return null;
+		
+		Employee employee = new Employee(DataTest.firstname(), DataTest.lastname(),DataTest.position());
+		employee.setId(id);
+
+		Utils.trace(employee.toString());
+		return Response.status(Status.ACCEPTED).entity(employee).build();
 	}
 
 }

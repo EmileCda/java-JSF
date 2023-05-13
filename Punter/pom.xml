@@ -3,7 +3,8 @@
   <groupId>fr.emile.punter</groupId>
   <artifactId>Punter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <description>Rest for client</description>
+  <description>Rest for client. tested and validated
+</description>
   <build>
     <plugins>
       <plugin>

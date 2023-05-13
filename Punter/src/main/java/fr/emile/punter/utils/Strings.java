@@ -1,6 +1,6 @@
 package fr.emile.punter.utils;
 
-import fr.emile.fabric.entity.Employee;
+import fr.emile.punter.entity.Employee;
 
 
 

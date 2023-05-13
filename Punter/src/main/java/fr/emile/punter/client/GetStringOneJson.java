@@ -6,7 +6,7 @@ import javax.ws.rs.core.MediaType;
 
 
 
-public class GetJson implements IConstant {
+public class GetStringOneJson implements IConstant {
 
 
 	public static void main(String[] args) {

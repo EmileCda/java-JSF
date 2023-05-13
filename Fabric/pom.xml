@@ -47,6 +47,5 @@
   		<version>1.9.13</version>
   	</dependency>
   </dependencies>
-  <description>Projet de rest  coté serveur
-</description>
+  <description>Projet de rest server : tested and validated</description>
 </project>
