@@ -5,31 +5,41 @@ import java.util.List;
 import javax.jws.WebService;
 
 import fr.emile.dove.entity.Student;
+import fr.emile.dove.model.implement.StudentDao;
+import fr.emile.dove.utils.Utils;
 
-@WebService(endpointInterface = "fr.emile.dove.webservice.StudentWebService", serviceName = "StudentWebService", portName = "StudentPort")
+@WebService(endpointInterface = "fr.emile.dove.webservice.StudentWebService", 
+serviceName = "StudentWebService", portName = "StudentWebServicePort")
 public class StudentWebService implements IStudentWebService {
 
-	@Override
+	
+	
+
 	public Student addStudent(Student student) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Utils.trace(student.toString());
+		if (student==null) throw new NullPointerException("Student null");
+		if (!student.isCorrect())
+			throw new IllegalArgumentException("Student not correct : "+ student.toString());
+		
+		
+		StudentDao myStudentDao = new StudentDao();
+		student=myStudentDao.add(student);
+		return student;
 	}
 
-	@Override
 	public List<Student> getStudent() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		StudentDao myStudentDao = new StudentDao();
+		return myStudentDao.get();
 	}
 
-	@Override
-	public Student getStudentZ(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Student getStudentById(Integer id) throws Exception {
+		StudentDao myStudentDao = new StudentDao();
+		return myStudentDao.get(id);
 	}
 
 	@Override
 	public Student addEtudiant(Student etudiant) throws Exception {
-		return addStudent(etudiant) ;
+		return addStudent(etudiant);
 	}
 
 	@Override
@@ -39,7 +49,7 @@ public class StudentWebService implements IStudentWebService {
 
 	@Override
 	public Student getEtudiantById(Integer id) throws Exception {
-		return getStudentZ( id) ;
+		return getStudentById(id);
 	}
 
 }

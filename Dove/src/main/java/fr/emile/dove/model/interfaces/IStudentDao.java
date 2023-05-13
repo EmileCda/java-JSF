@@ -5,7 +5,7 @@ import java.util.Map;
 
 import fr.emile.dove.entity.Student;
 
-public interface IStudent {
+public interface IStudentDao {
 	
 	Student add(Student student) throws Exception;
 	Student get(int id) throws Exception;

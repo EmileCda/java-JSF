@@ -1,0 +1,1 @@
+wsimport -keep -p fr.emile.dove.webservice http://localhost:9991/ws/StudentWebService?wsdl -b binding.xml
