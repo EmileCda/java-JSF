@@ -17,9 +17,9 @@ public class MainUserRetreive {
 	public static void main(String[] args) {
 //		testbyEmail() ;
 //		testbyCity() ;
-		testbyCityHashMap();
+//		testbyCityHashMap();
 //		testbyUser() ;
-//		testAllUser();
+		testAllUser();
 		
 	}
 	public static void testbyCityHashMap() {
@@ -102,8 +102,8 @@ public class MainUserRetreive {
 		Utils.trace("= retreive all user ==================================================\n");
 		try {
 			
-//			List<User> userList = myUserDao.get();
-			List<User> userList = myUserDao.getByCity("chirassimont");
+			List<User> userList = myUserDao.get();
+//			List<User> userList = myUserDao.getByCity("chirassimont");
 			
 
 			if (userList != null) {

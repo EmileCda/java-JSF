@@ -26,9 +26,9 @@ public class TestDummy {
 		try {
 
 			Query myQuery=session.createQuery("FROM User u join u.address a WHERE a.city=:arg",User.class);
-			Query myQuery2 = session.createNamedQuery() ;
-			myQuery.setString("arg", cityName);
-			myQuery.setParameter("arg", cityName);
+//			Query myQuery2 = session.createNamedQuery() ;
+//			myQuery.setString("arg", cityName);
+//			myQuery.setParameter("arg", cityName);
 			
 			userList = myQuery.getResultList() ;
 

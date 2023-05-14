@@ -13,7 +13,7 @@ public interface IAddressDao {
 	List<Address> get() throws Exception;
 	Address getById(int Id) throws Exception ;
 	
-	int Update(Address address)throws Exception;
+	int update(Address address)throws Exception;
 	int delete (int id)throws Exception;
 
 	

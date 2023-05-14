@@ -25,4 +25,5 @@
   		<version>2.0.1.Final</version>
   	</dependency>
   </dependencies>
+  <description>Access Data with Hibernate  tested and validated for User</description>
 </project>

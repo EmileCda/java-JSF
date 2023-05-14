@@ -15,21 +15,18 @@ import fr.emile.laze.model.dao.interfaces.IAddressDao;
 
 public class AddressDao implements IAddressDao, IConstant {
 
-	
 	public AddressDao() {
 	}
 //-----------------------------------------------------------------------------	
 
 	public Address add(Address address) throws Exception {
-
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
 			connection = DatabaseConnection.getConnection();
-			String sqlRequest = "INSERT INTO address(" +
-							"number, street, city,zip_code,user_id,is_valid)"+
-							"VALUES(?,?,?,?,?,?)";
+			String sqlRequest = "INSERT INTO address(" + "number, street, city,zip_code,user_id,is_valid)"
+					+ "VALUES(?,?,?,?,?,?)";
 			preparedStatement = connection.prepareStatement(sqlRequest, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, address.getNumber());
 			preparedStatement.setString(2, address.getStreet());
@@ -42,12 +39,12 @@ public class AddressDao implements IAddressDao, IConstant {
 			resultSet = preparedStatement.getGeneratedKeys();
 			if (resultSet != null && resultSet.next()) {
 				address.setId(resultSet.getInt(1));
-				return address ;
+				return address;
 			}
 		} finally {
 			this.closeStream(connection, preparedStatement, resultSet);
 		}
-		return address ;
+		return address;
 	}
 
 	// -----------------------------------------------------------------------------
@@ -58,9 +55,8 @@ public class AddressDao implements IAddressDao, IConstant {
 		List<Address> addressList = null;
 		try {
 			connection = DatabaseConnection.getConnection();
-			String sqlRequest = "SELECT `id`, `number`, `street`,"+
-						"`city`, `zip_code`, `user_id`, `is_valid`"+
-						"FROM `address` WHERE 1";
+			String sqlRequest = "SELECT `id`, `number`, `street`,"
+					+ "`city`, `zip_code`, `user_id`, `is_valid`, `is_delete`" + "FROM `address` WHERE 1";
 			preparedStatement = connection.prepareStatement(sqlRequest);
 
 			preparedStatement.execute();
@@ -70,11 +66,9 @@ public class AddressDao implements IAddressDao, IConstant {
 				addressList = new ArrayList<Address>();
 				while (resultSet.next()) {
 					Address address = new Address(resultSet.getInt("id"), resultSet.getString("number"),
-							resultSet.getString("street"), 
-							resultSet.getString("city"), 
-							resultSet.getString("zip_code"),
-							resultSet.getInt("user_id"),
-							resultSet.getBoolean("is_valid"));
+							resultSet.getString("street"), resultSet.getString("city"), resultSet.getString("zip_code"),
+							resultSet.getInt("user_id"), resultSet.getBoolean("is_valid"),
+							resultSet.getBoolean("is_deleted"));
 
 					addressList.add(address);
 				}
@@ -100,10 +94,8 @@ public class AddressDao implements IAddressDao, IConstant {
 		List<Address> addressList = null;
 		try {
 			connection = DatabaseConnection.getConnection();
-			String sqlRequest = "SELECT `id`, `number`, `street`,"+
-					"`city`, `zip_code`, `user_id`, `is_valid`"+
-					"FROM address WHERE user_id=? ";
-
+			String sqlRequest = "SELECT `id`, `number`, `street`,"
+					+ "`city`, `zip_code`, `user_id`, `is_valid`, `is_delete`" + "FROM address WHERE user_id=? ";
 
 			preparedStatement = connection.prepareStatement(sqlRequest);
 			preparedStatement.setInt(1, userId);
@@ -115,11 +107,9 @@ public class AddressDao implements IAddressDao, IConstant {
 				addressList = new ArrayList<Address>();
 				while (resultSet.next()) {
 					Address address = new Address(resultSet.getInt("id"), resultSet.getString("number"),
-							resultSet.getString("street"), 
-							resultSet.getString("city"), 
-							resultSet.getString("zip_code"),
-							resultSet.getInt("user_id"),
-							resultSet.getBoolean("is_valid"));
+							resultSet.getString("street"), resultSet.getString("city"), resultSet.getString("zip_code"),
+							resultSet.getInt("user_id"), resultSet.getBoolean("is_valid"),
+							resultSet.getBoolean("is_deleted"));
 
 					addressList.add(address);
 				}
@@ -139,10 +129,8 @@ public class AddressDao implements IAddressDao, IConstant {
 		Address address = null;
 		try {
 			connection = DatabaseConnection.getConnection();
-			String sqlRequest = "SELECT `id`, `number`, `street`,"+
-					"`city`, `zip_code`, `user_id`, `is_valid`"+
-					"FROM address WHERE id=? ";
-
+			String sqlRequest = "SELECT `id`, `number`, `street`,"
+					+ "`city`, `zip_code`, `user_id`, `is_valid`, `is_delete`" + "FROM address WHERE id=? ";
 
 			preparedStatement = connection.prepareStatement(sqlRequest);
 			preparedStatement.setInt(1, id);
@@ -153,13 +141,9 @@ public class AddressDao implements IAddressDao, IConstant {
 			if (resultSet != null && resultSet.next()) {
 
 				address = new Address(resultSet.getInt("id"), resultSet.getString("number"),
-						resultSet.getString("street"), 
-						resultSet.getString("city"), 
-						resultSet.getString("zip_code"),
-						resultSet.getInt("user_id"),
-						resultSet.getBoolean("is_valid"));
-
-
+						resultSet.getString("street"), resultSet.getString("city"), resultSet.getString("zip_code"),
+						resultSet.getInt("user_id"), resultSet.getBoolean("is_valid"),
+						resultSet.getBoolean("is_deleted"));
 
 			}
 		} finally {
@@ -170,17 +154,15 @@ public class AddressDao implements IAddressDao, IConstant {
 	}
 
 // -----------------------------------------------------------------------------
-	public int Update(Address address) throws Exception {
+	public int update(Address address) throws Exception {
 		Connection connection = null;
-		int result = 0 ; 
+		int result = 0;
 
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = DatabaseConnection.getConnection();
-			String sqlRequest = "UPDATE address SET"+
-								"number = ?, street = ?, city = ?, " +
-								"zip_code= ?, user_id = ?,is_valid = ?"+
-								"WHERE id = ?";
+			String sqlRequest = "UPDATE address SET" + "number = ?, street = ?, city = ?, "
+					+ "zip_code= ?, user_id = ?,is_valid = ?,is_deleted= ?" + "WHERE id = ?";
 			preparedStatement = connection.prepareStatement(sqlRequest);
 
 			preparedStatement.setString(1, address.getNumber());
@@ -189,19 +171,20 @@ public class AddressDao implements IAddressDao, IConstant {
 			preparedStatement.setString(4, address.getZipCode());
 			preparedStatement.setInt(5, address.getIdUser());
 			preparedStatement.setBoolean(6, address.isValide());
-			preparedStatement.setInt(7, address.getId());
+			preparedStatement.setBoolean(7, address.isDeleted());
+			preparedStatement.setInt(8, address.getId());
 
-			result =preparedStatement.executeUpdate();
+			result = preparedStatement.executeUpdate();
 		} finally {
 			this.closeStream(connection, preparedStatement);
 		}
-		return result; 
+		return result;
 	}
 
 // -----------------------------------------------------------------------------
 	public int delete(int id) throws Exception {
 		Connection connection = null;
-		int result = 0 ; 
+		int result = 0;
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = DatabaseConnection.getConnection();
@@ -215,7 +198,7 @@ public class AddressDao implements IAddressDao, IConstant {
 
 			this.closeStream(connection, preparedStatement);
 		}
-		return result ; 
+		return result;
 
 	}
 
@@ -243,5 +226,6 @@ public class AddressDao implements IAddressDao, IConstant {
 		closeStream(connection, preparedStatement, null);
 
 	}
+
 
 }
