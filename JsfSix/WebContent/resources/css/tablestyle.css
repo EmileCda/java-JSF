@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.order-table {
+	border-collapse: collapse;
+	background:var(--dark);
+	border : 1px solid var(--dark);
+	overflow: scroll;
+}
+
+.order-table tr{
+	text-align: left;
+	padding: 1rem;
+	border-top: 1px solid var(--dark);
+	vertical-align: top;
+}
+
+.order-table-header {
+	text-align: center;
+	background: no-repeat scroll 0 0 var(--medium);	
+	border-bottom: 1px solid var(--dark);
+	color : var(--light);
+}
+
+.order-table-odd-row {
+	background: no-repeat scroll 0 0 var(--light);
+}
+.order-table-even-row {
+	background: no-repeat scroll 0 0 var(--less-light);
+}
+

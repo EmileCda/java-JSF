@@ -10,7 +10,8 @@ build
 .settings
 Servers/
 .metadata/
-
+*properties
+*cfg.xml
 
 
 

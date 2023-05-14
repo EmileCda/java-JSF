@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<body>
+	<ui:composition>
+
+		<h:graphicImage library="images" name="logo.png" />
+		<h1>La Java d'émile</h1>
+		<h:form>
+			<ul>
+				<li><h:commandLink action="/main.xhtml">
+						<h:outputText value="#{msg['menu.home']}"></h:outputText>
+					</h:commandLink></li>
+				<li><h:commandLink action="/Enlist.xhtml">
+						<h:outputText value="#{msg['menu.enlist']}"></h:outputText>
+					</h:commandLink></li>
+				<li><h:commandLink action="/Enrollment.xhtml">
+						<h:outputText value="#{msg['menu.enroll']}"></h:outputText>
+					</h:commandLink></li>
+				<li><h:commandLink action="/test.xhtml">
+						<h:outputText value="Test"></h:outputText>
+					</h:commandLink></li>
+			</ul>
+		</h:form>
+		<h:graphicImage value="/resources/images/logo.png" />
+	</ui:composition>
+</body>
+</html>
