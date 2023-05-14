@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour getStudentById complex type.
+ * <p>Classe Java pour updateStudent complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="getStudentById">
+ * &lt;complexType name="updateStudent">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://webservice.dove.emile.fr/}Student" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,22 +26,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getStudentById2", propOrder = {
+@XmlType(name = "updateStudent", propOrder = {
     "arg0"
 })
-public class GetStudentById {
+public class UpdateStudent {
 
-    protected Integer arg0;
+    protected Student arg0;
 
     /**
      * Obtient la valeur de la propriété arg0.
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Student }
      *     
      */
-    public Integer getArg0() {
+    public Student getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class GetStudentById {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Student }
      *     
      */
-    public void setArg0(Integer value) {
+    public void setArg0(Student value) {
         this.arg0 = value;
     }
 

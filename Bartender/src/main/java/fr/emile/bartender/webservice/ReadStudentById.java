@@ -1,5 +1,5 @@
 
-package fr.emile.barman.webservice;
+package fr.emile.bartender.webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour addStudent complex type.
+ * <p>Classe Java pour readStudentById complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="addStudent">
+ * &lt;complexType name="readStudentById">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://webservice.dove.emile.fr/}student" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,22 +26,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "addStudent", propOrder = {
+@XmlType(name = "readStudentById", propOrder = {
     "arg0"
 })
-public class AddStudent {
+public class ReadStudentById {
 
-    protected Student arg0;
+    protected Integer arg0;
 
     /**
      * Obtient la valeur de la propriété arg0.
      * 
      * @return
      *     possible object is
-     *     {@link Student }
+     *     {@link Integer }
      *     
      */
-    public Student getArg0() {
+    public Integer getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class AddStudent {
      * 
      * @param value
      *     allowed object is
-     *     {@link Student }
+     *     {@link Integer }
      *     
      */
-    public void setArg0(Student value) {
+    public void setArg0(Integer value) {
         this.arg0 = value;
     }
 

@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the fr.emile.dove.webservice package. 
+ * generated in the fr.emile.bartender.webservice package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,50 +24,58 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _GetStudentByIdResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "getStudentByIdResponse");
-    private final static QName _AddEtudiantResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "addEtudiantResponse");
-    private final static QName _AddEtudiant_QNAME = new QName("http://webservice.dove.emile.fr/", "addEtudiant");
-    private final static QName _GetEtudiant_QNAME = new QName("http://webservice.dove.emile.fr/", "getEtudiant");
+    private final static QName _HardDeleteStudent_QNAME = new QName("http://webservice.dove.emile.fr/", "hardDeleteStudent");
     private final static QName _Exception_QNAME = new QName("http://webservice.dove.emile.fr/", "Exception");
-    private final static QName _GetStudent_QNAME = new QName("http://webservice.dove.emile.fr/", "getStudent");
-    private final static QName _AddStudent_QNAME = new QName("http://webservice.dove.emile.fr/", "addStudent");
-    private final static QName _GetEtudiantById_QNAME = new QName("http://webservice.dove.emile.fr/", "getEtudiantById");
-    private final static QName _GetEtudiantByIdResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "getEtudiantByIdResponse");
+    private final static QName _ReadStudentById_QNAME = new QName("http://webservice.dove.emile.fr/", "readStudentById");
+    private final static QName _CreateStudentResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "createStudentResponse");
+    private final static QName _ReadStudentByIdResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "readStudentByIdResponse");
+    private final static QName _DeleteStudentResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "deleteStudentResponse");
     private final static QName _Student_QNAME = new QName("http://webservice.dove.emile.fr/", "student");
-    private final static QName _AddStudentResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "addStudentResponse");
-    private final static QName _GetEtudiantResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "getEtudiantResponse");
-    private final static QName _GetStudentResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "getStudentResponse");
-    private final static QName _GetStudentById_QNAME = new QName("http://webservice.dove.emile.fr/", "getStudentById");
+    private final static QName _UpdateStudentResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "updateStudentResponse");
+    private final static QName _UpdateStudent_QNAME = new QName("http://webservice.dove.emile.fr/", "updateStudent");
+    private final static QName _DeleteStudent_QNAME = new QName("http://webservice.dove.emile.fr/", "deleteStudent");
+    private final static QName _HardDeleteStudentResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "hardDeleteStudentResponse");
+    private final static QName _ReadStudentList_QNAME = new QName("http://webservice.dove.emile.fr/", "readStudentList");
+    private final static QName _CreateStudent_QNAME = new QName("http://webservice.dove.emile.fr/", "createStudent");
+    private final static QName _ReadStudentListResponse_QNAME = new QName("http://webservice.dove.emile.fr/", "readStudentListResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.emile.dove.webservice
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: fr.emile.bartender.webservice
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link AddStudent }
+     * Create an instance of {@link ReadStudentById }
      * 
      */
-    public AddStudent createAddStudent() {
-        return new AddStudent();
+    public ReadStudentById createReadStudentById() {
+        return new ReadStudentById();
     }
 
     /**
-     * Create an instance of {@link GetEtudiantById }
+     * Create an instance of {@link ReadStudentByIdResponse }
      * 
      */
-    public GetEtudiantById createGetEtudiantById() {
-        return new GetEtudiantById();
+    public ReadStudentByIdResponse createReadStudentByIdResponse() {
+        return new ReadStudentByIdResponse();
     }
 
     /**
-     * Create an instance of {@link GetEtudiantByIdResponse }
+     * Create an instance of {@link CreateStudentResponse }
      * 
      */
-    public GetEtudiantByIdResponse createGetEtudiantByIdResponse() {
-        return new GetEtudiantByIdResponse();
+    public CreateStudentResponse createCreateStudentResponse() {
+        return new CreateStudentResponse();
+    }
+
+    /**
+     * Create an instance of {@link DeleteStudentResponse }
+     * 
+     */
+    public DeleteStudentResponse createDeleteStudentResponse() {
+        return new DeleteStudentResponse();
     }
 
     /**
@@ -79,27 +87,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetStudentByIdResponse }
+     * Create an instance of {@link UpdateStudentResponse }
      * 
      */
-    public GetStudentByIdResponse createGetStudentByIdResponse() {
-        return new GetStudentByIdResponse();
+    public UpdateStudentResponse createUpdateStudentResponse() {
+        return new UpdateStudentResponse();
     }
 
     /**
-     * Create an instance of {@link AddEtudiantResponse }
+     * Create an instance of {@link UpdateStudent }
      * 
      */
-    public AddEtudiantResponse createAddEtudiantResponse() {
-        return new AddEtudiantResponse();
+    public UpdateStudent createUpdateStudent() {
+        return new UpdateStudent();
     }
 
     /**
-     * Create an instance of {@link AddEtudiant }
+     * Create an instance of {@link HardDeleteStudent }
      * 
      */
-    public AddEtudiant createAddEtudiant() {
-        return new AddEtudiant();
+    public HardDeleteStudent createHardDeleteStudent() {
+        return new HardDeleteStudent();
     }
 
     /**
@@ -111,87 +119,52 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetStudent }
+     * Create an instance of {@link ReadStudentListResponse }
      * 
      */
-    public GetStudent createGetStudent() {
-        return new GetStudent();
+    public ReadStudentListResponse createReadStudentListResponse() {
+        return new ReadStudentListResponse();
     }
 
     /**
-     * Create an instance of {@link GetEtudiant }
+     * Create an instance of {@link DeleteStudent }
      * 
      */
-    public GetEtudiant createGetEtudiant() {
-        return new GetEtudiant();
+    public DeleteStudent createDeleteStudent() {
+        return new DeleteStudent();
     }
 
     /**
-     * Create an instance of {@link GetEtudiantResponse }
+     * Create an instance of {@link HardDeleteStudentResponse }
      * 
      */
-    public GetEtudiantResponse createGetEtudiantResponse() {
-        return new GetEtudiantResponse();
+    public HardDeleteStudentResponse createHardDeleteStudentResponse() {
+        return new HardDeleteStudentResponse();
     }
 
     /**
-     * Create an instance of {@link GetStudentResponse }
+     * Create an instance of {@link ReadStudentList }
      * 
      */
-    public GetStudentResponse createGetStudentResponse() {
-        return new GetStudentResponse();
+    public ReadStudentList createReadStudentList() {
+        return new ReadStudentList();
     }
 
     /**
-     * Create an instance of {@link GetStudentById }
+     * Create an instance of {@link CreateStudent }
      * 
      */
-    public GetStudentById createGetStudentById() {
-        return new GetStudentById();
+    public CreateStudent createCreateStudent() {
+        return new CreateStudent();
     }
 
     /**
-     * Create an instance of {@link AddStudentResponse }
+     * Create an instance of {@link JAXBElement }{@code <}{@link HardDeleteStudent }{@code >}}
      * 
      */
-    public AddStudentResponse createAddStudentResponse() {
-        return new AddStudentResponse();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStudentByIdResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getStudentByIdResponse")
-    public JAXBElement<GetStudentByIdResponse> createGetStudentByIdResponse(GetStudentByIdResponse value) {
-        return new JAXBElement<GetStudentByIdResponse>(_GetStudentByIdResponse_QNAME, GetStudentByIdResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddEtudiantResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "addEtudiantResponse")
-    public JAXBElement<AddEtudiantResponse> createAddEtudiantResponse(AddEtudiantResponse value) {
-        return new JAXBElement<AddEtudiantResponse>(_AddEtudiantResponse_QNAME, AddEtudiantResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddEtudiant }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "addEtudiant")
-    public JAXBElement<AddEtudiant> createAddEtudiant(AddEtudiant value) {
-        return new JAXBElement<AddEtudiant>(_AddEtudiant_QNAME, AddEtudiant.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEtudiant }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getEtudiant")
-    public JAXBElement<GetEtudiant> createGetEtudiant(GetEtudiant value) {
-        return new JAXBElement<GetEtudiant>(_GetEtudiant_QNAME, GetEtudiant.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "hardDeleteStudent")
+    public JAXBElement<HardDeleteStudent> createHardDeleteStudent(HardDeleteStudent value) {
+        return new JAXBElement<HardDeleteStudent>(_HardDeleteStudent_QNAME, HardDeleteStudent.class, null, value);
     }
 
     /**
@@ -204,39 +177,39 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStudent }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadStudentById }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getStudent")
-    public JAXBElement<GetStudent> createGetStudent(GetStudent value) {
-        return new JAXBElement<GetStudent>(_GetStudent_QNAME, GetStudent.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "readStudentById")
+    public JAXBElement<ReadStudentById> createReadStudentById(ReadStudentById value) {
+        return new JAXBElement<ReadStudentById>(_ReadStudentById_QNAME, ReadStudentById.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddStudent }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateStudentResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "addStudent")
-    public JAXBElement<AddStudent> createAddStudent(AddStudent value) {
-        return new JAXBElement<AddStudent>(_AddStudent_QNAME, AddStudent.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "createStudentResponse")
+    public JAXBElement<CreateStudentResponse> createCreateStudentResponse(CreateStudentResponse value) {
+        return new JAXBElement<CreateStudentResponse>(_CreateStudentResponse_QNAME, CreateStudentResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEtudiantById }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadStudentByIdResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getEtudiantById")
-    public JAXBElement<GetEtudiantById> createGetEtudiantById(GetEtudiantById value) {
-        return new JAXBElement<GetEtudiantById>(_GetEtudiantById_QNAME, GetEtudiantById.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "readStudentByIdResponse")
+    public JAXBElement<ReadStudentByIdResponse> createReadStudentByIdResponse(ReadStudentByIdResponse value) {
+        return new JAXBElement<ReadStudentByIdResponse>(_ReadStudentByIdResponse_QNAME, ReadStudentByIdResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEtudiantByIdResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteStudentResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getEtudiantByIdResponse")
-    public JAXBElement<GetEtudiantByIdResponse> createGetEtudiantByIdResponse(GetEtudiantByIdResponse value) {
-        return new JAXBElement<GetEtudiantByIdResponse>(_GetEtudiantByIdResponse_QNAME, GetEtudiantByIdResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "deleteStudentResponse")
+    public JAXBElement<DeleteStudentResponse> createDeleteStudentResponse(DeleteStudentResponse value) {
+        return new JAXBElement<DeleteStudentResponse>(_DeleteStudentResponse_QNAME, DeleteStudentResponse.class, null, value);
     }
 
     /**
@@ -249,39 +222,66 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AddStudentResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateStudentResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "addStudentResponse")
-    public JAXBElement<AddStudentResponse> createAddStudentResponse(AddStudentResponse value) {
-        return new JAXBElement<AddStudentResponse>(_AddStudentResponse_QNAME, AddStudentResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "updateStudentResponse")
+    public JAXBElement<UpdateStudentResponse> createUpdateStudentResponse(UpdateStudentResponse value) {
+        return new JAXBElement<UpdateStudentResponse>(_UpdateStudentResponse_QNAME, UpdateStudentResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetEtudiantResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateStudent }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getEtudiantResponse")
-    public JAXBElement<GetEtudiantResponse> createGetEtudiantResponse(GetEtudiantResponse value) {
-        return new JAXBElement<GetEtudiantResponse>(_GetEtudiantResponse_QNAME, GetEtudiantResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "updateStudent")
+    public JAXBElement<UpdateStudent> createUpdateStudent(UpdateStudent value) {
+        return new JAXBElement<UpdateStudent>(_UpdateStudent_QNAME, UpdateStudent.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStudentResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteStudent }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getStudentResponse")
-    public JAXBElement<GetStudentResponse> createGetStudentResponse(GetStudentResponse value) {
-        return new JAXBElement<GetStudentResponse>(_GetStudentResponse_QNAME, GetStudentResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "deleteStudent")
+    public JAXBElement<DeleteStudent> createDeleteStudent(DeleteStudent value) {
+        return new JAXBElement<DeleteStudent>(_DeleteStudent_QNAME, DeleteStudent.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetStudentById }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link HardDeleteStudentResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "getStudentById")
-    public JAXBElement<GetStudentById> createGetStudentById(GetStudentById value) {
-        return new JAXBElement<GetStudentById>(_GetStudentById_QNAME, GetStudentById.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "hardDeleteStudentResponse")
+    public JAXBElement<HardDeleteStudentResponse> createHardDeleteStudentResponse(HardDeleteStudentResponse value) {
+        return new JAXBElement<HardDeleteStudentResponse>(_HardDeleteStudentResponse_QNAME, HardDeleteStudentResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadStudentList }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "readStudentList")
+    public JAXBElement<ReadStudentList> createReadStudentList(ReadStudentList value) {
+        return new JAXBElement<ReadStudentList>(_ReadStudentList_QNAME, ReadStudentList.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateStudent }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "createStudent")
+    public JAXBElement<CreateStudent> createCreateStudent(CreateStudent value) {
+        return new JAXBElement<CreateStudent>(_CreateStudent_QNAME, CreateStudent.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ReadStudentListResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.dove.emile.fr/", name = "readStudentListResponse")
+    public JAXBElement<ReadStudentListResponse> createReadStudentListResponse(ReadStudentListResponse value) {
+        return new JAXBElement<ReadStudentListResponse>(_ReadStudentListResponse_QNAME, ReadStudentListResponse.class, null, value);
     }
 
 }

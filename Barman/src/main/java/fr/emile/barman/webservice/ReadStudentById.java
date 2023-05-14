@@ -3,21 +3,20 @@ package fr.emile.barman.webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour addStudentResponse complex type.
+ * <p>Classe Java pour readStudentById complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="addStudentResponse">
+ * &lt;complexType name="readStudentById">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://webservice.dove.emile.fr/}student" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "addStudentResponse", propOrder = {
-    "_return"
+@XmlType(name = "readStudentById", propOrder = {
+    "arg0"
 })
-public class AddStudentResponse {
+public class ReadStudentById {
 
-    @XmlElement(name = "return")
-    protected Student _return;
+    protected Integer arg0;
 
     /**
-     * Obtient la valeur de la propriété return.
+     * Obtient la valeur de la propriété arg0.
      * 
      * @return
      *     possible object is
-     *     {@link Student }
+     *     {@link Integer }
      *     
      */
-    public Student getReturn() {
-        return _return;
+    public Integer getArg0() {
+        return arg0;
     }
 
     /**
-     * Définit la valeur de la propriété return.
+     * Définit la valeur de la propriété arg0.
      * 
      * @param value
      *     allowed object is
-     *     {@link Student }
+     *     {@link Integer }
      *     
      */
-    public void setReturn(Student value) {
-        this._return = value;
+    public void setArg0(Integer value) {
+        this.arg0 = value;
     }
 
 }

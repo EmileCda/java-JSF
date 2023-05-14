@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-import fr.emile.barman.common.IConstant;
-import fr.emile.barman.enums.Gender;
-import fr.emile.barman.webservice.Student;
+import fr.emile.bartender.common.IConstant;
+import fr.emile.bartender.enums.Gender;
 import fr.emile.bartender.utils.Utils;
+import fr.emile.bartender.webservice.Student;
 
 public class DataTest implements IConstant {
 
@@ -35,15 +35,22 @@ public class DataTest implements IConstant {
 	}
 
 	// ---------------------------------------------------------------------------------------------------
-//	public static Student genStudent() {
-//
-//		String firstName = DataTest.firstname();
-//		String lastname = DataTest.lastname(); 
-//		
-//		return new Student(firstName, lastname,DataTest.email(firstName,lastname),				
-//				Utils.randInt(10, 50), DataTest.specialite());
-//
-//	}
+	public static Student genStudent() {
+
+		String firstname = DataTest.firstname();
+		String lastname = DataTest.lastname(); 
+		Student student = new Student();
+		
+		
+		student.setFirstname(firstname);
+		student.setLastname(lastname);
+		student.setEmail(DataTest.email(firstname, lastname));
+		student.setSpeciality(DataTest.specialite());
+		student.setAge(DataTest.age(18, 100));
+		
+		return student ; 
+
+	}
 	// ---------------------------------------------------------------------------------------------------
 //		public static User genUser() {
 //

@@ -3,25 +3,27 @@ package fr.emile.barman.webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour student complex type.
+ * <p>Classe Java pour Student complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="student">
+ * &lt;complexType name="Student">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="speciality" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="age" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="isCorrect" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="firstname" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="lastname" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="age" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="speciality" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="isDeleted" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,22 +33,52 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "student", propOrder = {
+@XmlType(name = "Student", propOrder = {
+    "id",
     "firstname",
     "lastname",
+    "age",
     "email",
     "speciality",
-    "age",
-    "isCorrect"
+    "isDeleted"
 })
 public class Student {
 
+    protected Integer id;
+    @XmlElement(required = true)
     protected String firstname;
+    @XmlElement(required = true)
     protected String lastname;
+    protected int age;
+    @XmlElement(required = true)
     protected String email;
+    @XmlElement(required = true)
     protected String speciality;
-    protected Integer age;
-    protected Boolean isCorrect;
+    protected boolean isDeleted;
+
+    /**
+     * Obtient la valeur de la propriété id.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Définit la valeur de la propriété id.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setId(Integer value) {
+        this.id = value;
+    }
 
     /**
      * Obtient la valeur de la propriété firstname.
@@ -94,6 +126,22 @@ public class Student {
      */
     public void setLastname(String value) {
         this.lastname = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété age.
+     * 
+     */
+    public int getAge() {
+        return age;
+    }
+
+    /**
+     * Définit la valeur de la propriété age.
+     * 
+     */
+    public void setAge(int value) {
+        this.age = value;
     }
 
     /**
@@ -145,56 +193,19 @@ public class Student {
     }
 
     /**
-     * Obtient la valeur de la propriété age.
+     * Obtient la valeur de la propriété isDeleted.
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
-    public Integer getAge() {
-        return age;
+    public boolean isIsDeleted() {
+        return isDeleted;
     }
 
     /**
-     * Définit la valeur de la propriété age.
+     * Définit la valeur de la propriété isDeleted.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
      */
-    public void setAge(Integer value) {
-        this.age = value;
+    public void setIsDeleted(boolean value) {
+        this.isDeleted = value;
     }
-
-    /**
-     * Obtient la valeur de la propriété isCorrect.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
-     */
-    public Boolean isIsCorrect() {
-        return isCorrect;
-    }
-
-    /**
-     * Définit la valeur de la propriété isCorrect.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
-     */
-    public void setIsCorrect(Boolean value) {
-        this.isCorrect = value;
-    }
-
-	@Override
-	public String toString() {
-		return String.format("%s %s, %d ans %s specialité : %s",firstname, lastname, age , email, speciality);
-	}
 
 }

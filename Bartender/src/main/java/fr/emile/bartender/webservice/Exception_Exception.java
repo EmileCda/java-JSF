@@ -45,7 +45,7 @@ public class Exception_Exception
     /**
      * 
      * @return
-     *     returns fault bean: fr.emile.dove.webservice.Exception
+     *     returns fault bean: fr.emile.bartender.webservice.Exception
      */
     public fr.emile.bartender.webservice.Exception getFaultInfo() {
         return faultInfo;

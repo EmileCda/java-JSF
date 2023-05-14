@@ -11,24 +11,21 @@ import fr.emile.dove.entity.Student;
 @WebService(name="StudentWebService", targetNamespace ="http://webservice.dove.emile.fr" )
 public interface IStudentWebService {
 	
-//	@WebMethod
-//	Student addStudent(@WebParam(name="student") Student student) throws Exception;
-//	
-//	@WebMethod
-//	List<Student> getStudent() throws Exception;
-//
-//	@WebMethod
-//	Student getStudentById(@WebParam(name="id") Integer id) throws Exception;
-
 
 	@WebMethod
-	Student addEtudiant(@WebParam(name="etudiant") Student etudiant) throws Exception;
+	Student createStudent(@WebParam(name="student") Student student) throws Exception;
 	
 	@WebMethod
-	List<Student> getEtudiant() throws Exception;
-
+	Student readStudentById(@WebParam(name="id") Integer id) throws Exception;
 	@WebMethod
-	Student getEtudiantById(@WebParam(name="id") Integer id) throws Exception;
-
+	List<Student> readStudentList() throws Exception;
+	
+	@WebMethod
+	int updateStudent(@WebParam(name="student") Student student) throws Exception;
+	@WebMethod
+	int deleteStudent(@WebParam(name="id") Integer id) throws Exception;
+	
+	@WebMethod
+	int hardDeleteStudent(@WebParam(name="id") Integer id) throws Exception;
 
 }

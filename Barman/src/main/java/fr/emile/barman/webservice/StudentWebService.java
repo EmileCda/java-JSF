@@ -35,12 +35,12 @@ public interface StudentWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "addStudent", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.AddStudent")
-    @ResponseWrapper(localName = "addStudentResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.AddStudentResponse")
-    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/addStudentRequest", output = "http://webservice.dove.emile.fr/StudentWebService/addStudentResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/addStudent/Fault/Exception")
+    @RequestWrapper(localName = "createStudent", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.CreateStudent")
+    @ResponseWrapper(localName = "createStudentResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.CreateStudentResponse")
+    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/createStudentRequest", output = "http://webservice.dove.emile.fr/StudentWebService/createStudentResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/createStudent/Fault/Exception")
     })
-    public Student addStudent(
+    public Student createStudent(
         @WebParam(name = "arg0", targetNamespace = "")
         Student arg0)
         throws Exception_Exception
@@ -54,12 +54,12 @@ public interface StudentWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getStudent", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetStudent")
-    @ResponseWrapper(localName = "getStudentResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetStudentResponse")
-    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/getStudentRequest", output = "http://webservice.dove.emile.fr/StudentWebService/getStudentResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/getStudent/Fault/Exception")
+    @RequestWrapper(localName = "readStudentList", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.ReadStudentList")
+    @ResponseWrapper(localName = "readStudentListResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.ReadStudentListResponse")
+    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/readStudentListRequest", output = "http://webservice.dove.emile.fr/StudentWebService/readStudentListResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/readStudentList/Fault/Exception")
     })
-    public List<Student> getStudent()
+    public List<Student> readStudentList()
         throws Exception_Exception
     ;
 
@@ -72,12 +72,12 @@ public interface StudentWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getStudentById", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetStudentById")
-    @ResponseWrapper(localName = "getStudentByIdResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetStudentByIdResponse")
-    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/getStudentByIdRequest", output = "http://webservice.dove.emile.fr/StudentWebService/getStudentByIdResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/getStudentById/Fault/Exception")
+    @RequestWrapper(localName = "readStudentById", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.ReadStudentById")
+    @ResponseWrapper(localName = "readStudentByIdResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.ReadStudentByIdResponse")
+    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/readStudentByIdRequest", output = "http://webservice.dove.emile.fr/StudentWebService/readStudentByIdResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/readStudentById/Fault/Exception")
     })
-    public Student getStudentById(
+    public Student readStudentById(
         @WebParam(name = "arg0", targetNamespace = "")
         Integer arg0)
         throws Exception_Exception
@@ -87,17 +87,17 @@ public interface StudentWebService {
      * 
      * @param arg0
      * @return
-     *     returns fr.emile.barman.webservice.Student
+     *     returns int
      * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "addEtudiant", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.AddEtudiant")
-    @ResponseWrapper(localName = "addEtudiantResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.AddEtudiantResponse")
-    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/addEtudiantRequest", output = "http://webservice.dove.emile.fr/StudentWebService/addEtudiantResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/addEtudiant/Fault/Exception")
+    @RequestWrapper(localName = "updateStudent", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.UpdateStudent")
+    @ResponseWrapper(localName = "updateStudentResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.UpdateStudentResponse")
+    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/updateStudentRequest", output = "http://webservice.dove.emile.fr/StudentWebService/updateStudentResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/updateStudent/Fault/Exception")
     })
-    public Student addEtudiant(
+    public int updateStudent(
         @WebParam(name = "arg0", targetNamespace = "")
         Student arg0)
         throws Exception_Exception
@@ -105,18 +105,21 @@ public interface StudentWebService {
 
     /**
      * 
+     * @param arg0
      * @return
-     *     returns java.util.List<fr.emile.barman.webservice.Student>
+     *     returns int
      * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEtudiant", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetEtudiant")
-    @ResponseWrapper(localName = "getEtudiantResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetEtudiantResponse")
-    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/getEtudiantRequest", output = "http://webservice.dove.emile.fr/StudentWebService/getEtudiantResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/getEtudiant/Fault/Exception")
+    @RequestWrapper(localName = "deleteStudent", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.DeleteStudent")
+    @ResponseWrapper(localName = "deleteStudentResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.DeleteStudentResponse")
+    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/deleteStudentRequest", output = "http://webservice.dove.emile.fr/StudentWebService/deleteStudentResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/deleteStudent/Fault/Exception")
     })
-    public List<Student> getEtudiant()
+    public int deleteStudent(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Integer arg0)
         throws Exception_Exception
     ;
 
@@ -124,17 +127,17 @@ public interface StudentWebService {
      * 
      * @param arg0
      * @return
-     *     returns fr.emile.barman.webservice.Student
+     *     returns int
      * @throws Exception_Exception
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getEtudiantById", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetEtudiantById")
-    @ResponseWrapper(localName = "getEtudiantByIdResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.GetEtudiantByIdResponse")
-    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/getEtudiantByIdRequest", output = "http://webservice.dove.emile.fr/StudentWebService/getEtudiantByIdResponse", fault = {
-        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/getEtudiantById/Fault/Exception")
+    @RequestWrapper(localName = "hardDeleteStudent", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.HardDeleteStudent")
+    @ResponseWrapper(localName = "hardDeleteStudentResponse", targetNamespace = "http://webservice.dove.emile.fr/", className = "fr.emile.barman.webservice.HardDeleteStudentResponse")
+    @Action(input = "http://webservice.dove.emile.fr/StudentWebService/hardDeleteStudentRequest", output = "http://webservice.dove.emile.fr/StudentWebService/hardDeleteStudentResponse", fault = {
+        @FaultAction(className = Exception_Exception.class, value = "http://webservice.dove.emile.fr/StudentWebService/hardDeleteStudent/Fault/Exception")
     })
-    public Student getEtudiantById(
+    public int hardDeleteStudent(
         @WebParam(name = "arg0", targetNamespace = "")
         Integer arg0)
         throws Exception_Exception

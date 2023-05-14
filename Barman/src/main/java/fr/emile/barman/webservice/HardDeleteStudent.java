@@ -1,5 +1,5 @@
 
-package fr.emile.bartender.webservice;
+package fr.emile.barman.webservice;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java pour getEtudiantById complex type.
+ * <p>Classe Java pour hardDeleteStudent complex type.
  * 
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="getEtudiantById">
+ * &lt;complexType name="hardDeleteStudent">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getEtudiantById", propOrder = {
+@XmlType(name = "hardDeleteStudent", propOrder = {
     "arg0"
 })
-public class GetEtudiantById {
+public class HardDeleteStudent {
 
     protected Integer arg0;
 

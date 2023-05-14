@@ -15,41 +15,44 @@ public class StudentWebService implements IStudentWebService {
 	
 	
 
-	public Student addStudent(Student student) throws Exception {
+	public Student createStudent(Student student) throws Exception {
 		Utils.trace(student.toString());
 		if (student==null) throw new NullPointerException("Student null");
 		if (!student.isCorrect())
 			throw new IllegalArgumentException("Student not correct : "+ student.toString());
-		
-		
 		StudentDao myStudentDao = new StudentDao();
 		student=myStudentDao.add(student);
 		return student;
 	}
 
-	public List<Student> getStudent() throws Exception {
+	public List<Student> readStudentList() throws Exception {
 		StudentDao myStudentDao = new StudentDao();
 		return myStudentDao.get();
 	}
 
-	public Student getStudentById(Integer id) throws Exception {
+	public Student readStudentById(Integer id) throws Exception {
 		StudentDao myStudentDao = new StudentDao();
+		Utils.trace("readStudentById");
 		return myStudentDao.get(id);
 	}
 
 	@Override
-	public Student addEtudiant(Student etudiant) throws Exception {
-		return addStudent(etudiant);
+	public int updateStudent(Student student) throws Exception {
+		StudentDao myStudentDao = new StudentDao();
+		Utils.trace(student.toString());
+		return myStudentDao.update(student);
 	}
 
 	@Override
-	public List<Student> getEtudiant() throws Exception {
-		return getStudent();
+	public int deleteStudent(Integer id) throws Exception {
+		StudentDao myStudentDao = new StudentDao();
+		return myStudentDao.delete(id);
+	}
+	@Override
+	public int hardDeleteStudent(Integer id) throws Exception {
+		StudentDao myStudentDao = new StudentDao();
+		return myStudentDao.remove (myStudentDao.get(id));
 	}
 
-	@Override
-	public Student getEtudiantById(Integer id) throws Exception {
-		return getStudentById(id);
-	}
 
 }

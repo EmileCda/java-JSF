@@ -35,15 +35,22 @@ public class DataTest implements IConstant {
 	}
 
 	// ---------------------------------------------------------------------------------------------------
-//	public static Student genStudent() {
-//
-//		String firstName = DataTest.firstname();
-//		String lastname = DataTest.lastname(); 
-//		
-//		return new Student(firstName, lastname,DataTest.email(firstName,lastname),				
-//				Utils.randInt(10, 50), DataTest.specialite());
-//
-//	}
+	public static Student genStudent() {
+
+		String firstname = DataTest.firstname();
+		String lastname = DataTest.lastname(); 
+		Student student = new Student();
+		
+		
+		student.setFirstname(firstname);
+		student.setLastname(lastname);
+		student.setEmail(DataTest.email(firstname, lastname));
+		student.setSpeciality(DataTest.specialite());
+		student.setAge(DataTest.age(18, 100));
+		
+		return student ; 
+
+	}
 	// ---------------------------------------------------------------------------------------------------
 //		public static User genUser() {
 //

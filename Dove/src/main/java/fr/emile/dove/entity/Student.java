@@ -1,5 +1,7 @@
 package fr.emile.dove.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,18 +22,17 @@ import fr.emile.dove.utils.Utils;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Student",propOrder ={
-		"firstname","lastname","age","email","speciality"
+		"id","firstname","lastname","age","email","speciality","isDeleted"
 		
 })
 @Entity
 @Table(name = "student")
 @XmlRootElement
 
-public class Student implements IConstant {
+public class Student implements Serializable,IConstant {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@XmlTransient
 	private Integer id;
 	@XmlElement(required = true)
 	private String firstname;
@@ -47,6 +48,10 @@ public class Student implements IConstant {
 	@XmlElement(required = true)
 	private Integer age;
 
+	@XmlElement(required = true)
+	private boolean isDeleted;
+
+	@Transient
 	@XmlTransient
 	private Boolean isCorrect ;
 	
@@ -116,7 +121,10 @@ public class Student implements IConstant {
 
 	@Override
 	public String toString() {
-		return String.format("id:%d %s %s %d : %s", getId(), getFirstname(), getLastname(), getAge(), getSpeciality());
+		return String.format("id:%d %s %s %d %s : %s", 
+				getId(), getFirstname(), getLastname(), getAge(), 
+				getEmail(),
+				getSpeciality());
 
 	}
 
@@ -144,6 +152,16 @@ public class Student implements IConstant {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+
+	public boolean isdeleted() {
+		return isDeleted;
+	}
+
+	public void setdeleted(boolean isdeleted) {
+		this.isDeleted = isdeleted;
 	}
 
 }

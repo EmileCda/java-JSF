@@ -13,6 +13,7 @@ import fr.emile.dove.model.connect.DBConnect;
 import fr.emile.dove.model.interfaces.IStudentDao;
 import fr.emile.dove.utils.Utils;
 
+
 public class StudentDao implements IStudentDao {
 
 // -------------------------------------------------------------------------------------------------
@@ -25,11 +26,11 @@ public class StudentDao implements IStudentDao {
 		try {
 
 			transaction = session.beginTransaction();
-			session.save(student);
+			session.persist(student);
 			transaction.commit();
 
 		} catch (Exception e) {
-
+			Utils.trace("catch Exception" + e.toString());
 			if (transaction != null) {
 				transaction.rollback();
 			}
@@ -49,12 +50,17 @@ public class StudentDao implements IStudentDao {
 		Session session = DBConnect.getSession();
 
 		try {
+			Utils.trace("titi"+ id);
+
 			studentReturn= session.find(Student.class, id);
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			Utils.trace("catch get " + e.toString());
 
 		} finally {
+
+			Utils.trace(studentReturn.toString());
+
 			if (session != null && session.isOpen())
 				session.close();
 
@@ -111,38 +117,94 @@ public class StudentDao implements IStudentDao {
 //-------------------------------------------------------------------------------------------------
 	@Override
 	public int update(Student student) throws Exception {
-		// TODO Auto-generated method stub
+		Session session = DBConnect.getSession();
+		Transaction transaction = null;
+		try {
+
+			transaction = session.beginTransaction();
+			session.update(student);
+			transaction.commit();
+
+		} catch (Exception e) {
+			Utils.trace("catch Update "+ e.toString());
+
+			if (transaction != null) {
+				transaction.rollback();
+			}
+
+		} finally {
+			if (session != null && session.isOpen())
+				session.close();
+
+		}
 		return 0;
 	}
 
 //-------------------------------------------------------------------------------------------------
 	@Override
 	public int delete(int id, boolean isDeleted) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		Student student = this.get(id);
+		return this.delete(student, isDeleted);
 	}
 
+	//-------------------------------------------------------------------------------------------------
 	@Override
 	public int delete(Student student, boolean isDeleted) throws Exception {
-		// TODO Auto-generated method stub
+		Session session = DBConnect.getSession();
+		Transaction transaction = null;
+		try {
+
+			transaction = session.beginTransaction();
+			student.setdeleted(isDeleted);
+			session.update(student);
+			transaction.commit();
+
+		} catch (Exception e) {
+
+			if (transaction != null) {
+				transaction.rollback();
+			}
+
+		} finally {
+			if (session != null && session.isOpen())
+				session.close();
+
+		}
 		return 0;
 	}
 
 	@Override
 	public int delete(int id) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		Student student = this.get(id);
+		return this.delete(student, true);	
 	}
 
 	@Override
 	public int delete(Student student) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.delete(student, true);	
 	}
 
 	@Override
 	public int remove(Student student) throws Exception {
-		// TODO Auto-generated method stub
+		Session session = DBConnect.getSession();
+		Transaction transaction = null;
+		try {
+
+			transaction = session.beginTransaction();
+			session.delete(student);
+			transaction.commit();
+
+		} catch (Exception e) {
+
+			if (transaction != null) {
+				transaction.rollback();
+			}
+
+		} finally {
+			if (session != null && session.isOpen())
+				session.close();
+
+		}
 		return 0;
 	}
 
