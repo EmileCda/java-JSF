@@ -19,12 +19,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import fr.emile.fabric.entity.Employee;
-import fr.emile.fabric.utils.DataTest;
-import fr.emile.fabric.utils.Utils;
+import fr.emile.fabric.common.DataTest;
 import fr.emile.fabric.common.IConstant;
+import fr.emile.fabric.common.Utils;
 
 @Path("employee")
-@Produces(MediaType.TEXT_PLAIN +fr.emile.fabric.common.IConstant.CHARSET_UTF8)  // produces by default if ommited in methode
+@Produces(MediaType.TEXT_PLAIN + IConstant.CHARSET_UTF8) // return a string so Text_Plain
 public class EmployeeWebResource implements IEmployeeWebResource, IConstant {
 
 

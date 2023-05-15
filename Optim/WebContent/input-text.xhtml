@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Optim</title>
+</head>
+<f:view>
+	<ui:composition template="/resources/template/layout.xhtml">
+		<ui:define name="content">
+			<h2>#{msg['input-text.title']}</h2>
+			<h:form>
+				<div class="component lastname">
+					<h:inputText value="#{userBean.firstname}" required="true"
+						a:placeholder="#{msg['input-text.stringTexte']}"
+						requiredMessage="#{msg['input-text.prompt.stringTexte']}"
+						id="stringTexte" />
+					<h:message for="stringTexte" />
+				</div>
+
+				<h:outputLabel value="First name" for="firstname" />
+				<h:inputText id="firstname" value="#{userBean.firstname}" />
+
+				<h:outputLabel value="Last name" for="lastname" />
+				<h:inputText id="lastname" value="#{userBean.lastname}" />
+				<h:commandButton action="result" value="send" />
+
+
+				<div class="component">
+					<h:commandButton id="Button" value="#{msg['input-text.button']}"
+						styleClass="enroll-button" action="#{UserBean.buttonClick()}" />
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</f:view>
+</html>

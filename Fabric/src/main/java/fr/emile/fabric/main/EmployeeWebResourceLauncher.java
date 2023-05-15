@@ -4,11 +4,13 @@ import java.net.URI;
 
 import javax.ws.rs.ApplicationPath;
 
-import fr.emile.fabric.utils.Utils;
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.api.core.PackagesResourceConfig;
 
 import com.sun.net.httpserver.HttpServer;
+
+import fr.emile.fabric.common.Utils;
+
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 
 @ApplicationPath("services")
