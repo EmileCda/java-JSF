@@ -1,12 +1,15 @@
-package fr.emile.lunh.test;
+package fr.emile.bluemoon.test;
 
-import fr.emile.lunh.adaptator.ToBlob;
-import fr.emile.lunh.common.IConstant;
-import fr.emile.lunh.utils.Utils;
+import java.util.logging.Level;
+
+import fr.emile.bluemoon.adaptator.ToBlob;
+import fr.emile.bluemoon.common.IConstant;
+import fr.emile.bluemoon.utils.Utils;
 
 public class TestToBlob implements IConstant {
 	public static void main(String[] args) {
 		
+//		java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
 		
 		byte[] textEcrypted = null;
 		String resultat ="";
@@ -33,7 +36,7 @@ public class TestToBlob implements IConstant {
 		}finally {
 			
 			Utils.trace("decrytion done");
-			Utils.trace("orignal:"+DEFAULT_TEXT);
+			Utils.trace("orignal  :"+DEFAULT_TEXT);
 			Utils.trace("decrypted:"+ resultat);
 			
 		}

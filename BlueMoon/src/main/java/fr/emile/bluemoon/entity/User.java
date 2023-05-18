@@ -1,4 +1,4 @@
-package fr.emile.lunh.entity;
+package fr.emile.bluemoon.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,13 +27,11 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import fr.emile.lunh.utils.Utils;
-import fr.emile.lunh.entity.Address;
-import fr.emile.lunh.adaptator.ToBlob;
-//import fr.emile.redrose.entity.BankCard;
-//import fr.emile.redrose.entity.Order;
-import fr.emile.lunh.common.IConstant;
-import fr.emile.lunh.enums.Gender;
+import fr.emile.bluemoon.adaptator.ToBlob;
+import fr.emile.bluemoon.common.IConstant;
+import fr.emile.bluemoon.entity.Address;
+import fr.emile.bluemoon.enums.Gender;
+import fr.emile.bluemoon.utils.Utils;
 
 @Entity
 @XmlInlineBinaryData
@@ -65,8 +63,6 @@ public class User implements Serializable, IConstant {
 
 //	https://stackoverflow.com/questions/18526877/model-class-running-multiple-queries-in-hibernate
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
-//	@Fetch(FetchMode.SUBSELECT)
-	@BatchSize(size=2)
 	private List<Address> addressList ;
 
 	//	private List<BankCard> bankCardList ;

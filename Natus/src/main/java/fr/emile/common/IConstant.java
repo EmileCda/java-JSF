@@ -1,14 +1,13 @@
-package fr.emile.lunh.common;
+package fr.emile.common;
 
 import java.util.Date;
 
-import fr.emile.lunh.enums.Gender;
+import fr.emile.redrose.enums.Gender;
 
 public interface IConstant {
 
-	public final String  DEFAULT_TEXT = "Et je m’en vais au vent mauvais Qui m’emporte Deçà, delà,Pareil à la Feuille morte." ;
-	
-	
+	public final String  DEFAULT_TEXT = "Et je m’en vais au vent mauvais qui m’emporte deçà, delà,Pareil à la feuille morte." ;
+
 	public final String  DEFAULT_BANK_CARD_NUMBER = "1000200030004000" ;
 	public final String  DEFAULT_BANK_CARD_CRYPTO = "XYZ" ;
 	public final String  DEFAULT_FIRSTNAME = "No-Firstname" ;
@@ -20,6 +19,7 @@ public interface IConstant {
 	public final String  DEFAULT_ADDRESS_ZIP_CODE = "AXBXC" ;
 	public final String  DEFAULT_EMAIL= "no-mail@no-mail.no" ;
 	public final String  DEFAULT_PASS= "no-password" ;
+
 	public final Boolean  DEFAULT_IS_VALIDE= true;
 	public final Boolean DEFAULT_IS_DELETE= false;
 	public final Integer DEFAULT_ID = -1 ;
@@ -30,7 +30,6 @@ public interface IConstant {
 	public static final int FUNCTION_KEY_DB = 1705;
 	public static final int KEY_LENGTH = 256;
 	
-
 //	public final Address NULL_ADDRESS = null ;
 //	public final BankCard NULL_BANKCARD = null ;
 //	

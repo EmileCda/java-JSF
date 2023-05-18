@@ -1,4 +1,4 @@
-package fr.emile.lunh.entity;
+package fr.emile.bluemoon.entity;
 
 import java.io.Serializable;
 
@@ -20,12 +20,10 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import fr.emile.lunh.common.IConstant;
+import fr.emile.bluemoon.common.IConstant;
 
 @Entity
-
 @Table(name = "address")
-@XmlRootElement
 public class Address implements IConstant, Serializable {
 	
 	private static final long serialVersionUID = 1L;

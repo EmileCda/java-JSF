@@ -1,50 +1,31 @@
-package fr.emile.lunh.test;
+package fr.emile.common;
 
+import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
 
 public class Encode {
 
 	public static final String ALGORITHM = "AES";
 	public static final String CHARSET = "UTF8";
 
-	private static Key genKey() throws NoSuchAlgorithmException {
+	public static Key genKey() throws NoSuchAlgorithmException {
 
 		KeyGenerator keyGen = KeyGenerator.getInstance(Encode.ALGORITHM);
 
 //		SecureRandom secRandom = new SecureRandom();// Creating a SecureRandom object
 //		keyGen.init(secRandom); // other solution : Initializing the KeyGenerator witht random length  
 
-		keyGen.init(256); // Initializing the KeyGenerator
+		keyGen.init(56); // Initializing the KeyGenerator
 
 		// Creating/Generating a key
 		return keyGen.generateKey();
 
-	}
-
-//-----------------------------------------------------------------------------------------
-
-	public static Key getKey() throws NoSuchAlgorithmException {
-
-		Key keyFromDb = null;
-		keyFromDb = Encode.getKeyFromDB(Encode.ALGORITHM);
-		if (keyFromDb != null) {
-
-			return keyFromDb;
-
-		} else {
-
-			return Encode.genKey();
-		}
-	}
-
-//-----------------------------------------------------------------------------------------
-	public static Key getKeyFromDB(String algo) {
-
-		return null;
 	}
 
 //-----------------------------------------------------------------------------------------
@@ -61,7 +42,7 @@ public class Encode {
 	public static byte[] encrypt(String String2Encrypte, Key key) throws Exception {
 
 		byte[] messageByte = String2Encrypte.getBytes(CHARSET);
-		return encrypt(messageByte, key);
+		return   encrypt(messageByte, key);
 
 	}
 

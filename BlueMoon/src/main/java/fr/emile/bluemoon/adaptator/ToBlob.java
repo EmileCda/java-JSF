@@ -1,4 +1,4 @@
-package fr.emile.lunh.adaptator;
+package fr.emile.bluemoon.adaptator;
 
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -6,15 +6,15 @@ import java.security.NoSuchAlgorithmException;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 
-import fr.emile.lunh.common.IConstant;
-import fr.emile.lunh.entity.Admin;
-import fr.emile.lunh.model.implement.AdminDao;
-import fr.emile.lunh.model.interfaces.IAdminDao;
-import fr.emile.lunh.utils.Utils;
+import fr.emile.bluemoon.common.IConstant;
+import fr.emile.bluemoon.entity.Admin;
+import fr.emile.bluemoon.model.implement.ZAdminDao;
+import fr.emile.bluemoon.model.interfaces.IAdminDao;
+import fr.emile.bluemoon.utils.Utils;
 
 public class ToBlob implements IConstant {
 
-	//-----------------------------------------------------------------------------------------
+	// -----------------------------------------------------------------------------------------
 // this method generate a new secretKey using algoritm and keylenght
 	private static Key genKey() throws NoSuchAlgorithmException {
 
@@ -23,26 +23,22 @@ public class ToBlob implements IConstant {
 //		keyGen.init(secRandom); // other solution : Initializing the KeyGenerator witht random length  
 
 		keyGen.init(KEY_LENGTH); // Initializing the KeyGenerator
-		return keyGen.generateKey();  // Creating/Generating a key
+		return keyGen.generateKey(); // Creating/Generating a key
 
 	}
-
 
 //-----------------------------------------------------------------------------------------
 // this method retreive the encryption key. 
 // retrevie from database if existed or generat a new key if not
 	private static Key getKey() throws NoSuchAlgorithmException {
 
-//		1) retreive key from database
 		Key keyFromDb = null;
-		keyFromDb = ToBlob.getKeyFromDB(ALGORITHM);
-//		2) if key retreived => return key
-		if (keyFromDb != null) {
+		keyFromDb = ToBlob.getKeyFromDB(ALGORITHM); // 1) retreive key from database
 
+		if (keyFromDb != null) { // 2) if key retreived => return key
 			return keyFromDb;
+		} else { // else : generate new key and save in database
 
-		} else {
-//			else : generate new key and save in database
 			Key newKey = ToBlob.genKey();
 			ToBlob.saveKey(newKey);
 			return newKey;
@@ -52,32 +48,32 @@ public class ToBlob implements IConstant {
 // -----------------------------------------------------------------------------------------
 // this method save the encryption key as a byte[], conversion is done in setCrytoKey(newKey) method
 	public static void saveKey(Key newKey) {
-		
+
 		Utils.trace("saveKey");
 		Admin newAdmin = new Admin();
 		newAdmin.setCrytoKey(newKey);
 		newAdmin.setAlgorythm(ALGORITHM);
 		newAdmin.setLentgh(KEY_LENGTH);
 		newAdmin.setFunctionCode(FUNCTION_KEY_DB);
-		IAdminDao myAdminDao = new AdminDao();
+		IAdminDao myAdminDao = new ZAdminDao();
 		try {
 			myAdminDao.add(newAdmin);
-			
+
 		} catch (Exception e) {
 			Utils.trace("Catch saveKey");
 			e.printStackTrace();
-		} 
-	
+		}
+
 	}
 
 // -----------------------------------------------------------------------------------------
 // try to retreive crypto key from database.
 // each record in this table has a unique fonction_code.
 // return null if function_code do not exist in database	
-	
+
 	private static Key getKeyFromDB(String algo) {
 
-		IAdminDao myAdminDao = new AdminDao();
+		IAdminDao myAdminDao = new ZAdminDao();
 		Admin myAdmin = null;
 
 		try {
@@ -128,7 +124,7 @@ public class ToBlob implements IConstant {
 
 		Cipher cipher = Cipher.getInstance(ToBlob.ALGORITHM);
 		cipher.init(Cipher.DECRYPT_MODE, ToBlob.getKey());
-		return new String (cipher.doFinal(toDecrypte),CHARSET );
+		return new String(cipher.doFinal(toDecrypte), CHARSET);
 
 	}
 
